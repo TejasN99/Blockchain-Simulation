@@ -1,34 +1,12 @@
-#We might need to initially broadcast the balances of each  node b4 starting the simulation
-
-#events_list is a global list accessible to all the nodes in order to schedule their activities in a 
-#timestamped manner
-
-#To do:
-#CoinBase : Txn Fomrat??
-#Balance Sheet Maintenance?? Tricky for forks!
-
-#What are the possbile events? List them down.
-#Event 1. Generate Transaction: All nodes must generate traansactions periodically as it is an independent event
-#Event 2. Mine Block: All nodes must kick-off mining once. 
-                #Mining means colllecting a subset of txns from UTXO, verify if the block is valid by checking for negative balances and start mining
-    #Upon Completion of "self-mined block":
-                # a.Schedule another mining event when mining duration elapses (Duration can be pre-computed)
-                # b.Add block  to miner's blockchain
-                # c.Broadcast mined block amongst peers
-                # d. Remove all these transactions from Unspent Transaction Pool of the Miner
-                # e. Update the Balance Sheet of the Miner
-                # f. Award itself the Mining Fee of 50 BTC$ (Think of logic when exactly when we want to award the fee?) 
-                # g. ???? Anything else to be done????  
-    #If someone's elses block wins, a node will verify the block. If verified: 
-        #b,c,d,e remainds the same (We assume negigible delay in these steps as not mentioned in Assignment)
-        #Additional actions:
-        #f.Terminate the event of mining next block based on self-mined block (as it will be orphaned) and 
-        #immediately start mining on a new block i.e. A Mine Block event will be genrated by the node
-            # Think about resolution of forks here!! 
-
+ 
 from random import randint
 from numpy import random
+from event_classes import Event,Node
 import time
+
+#Simulation Parameters:
+#Interarrival time between transactions
+Ttx=10
 def network_topology():
     total_nodes=randint(10,20)
     #print("Total Nodes are",total_nodes)
@@ -81,27 +59,6 @@ def network_topology():
     return node_graph,node_speed,node_hash,total_nodes,init_node_bal  
 
 
-#Periodically Generate Transactions
-#To DO: Time Delay should be an exponenetial Distribution
-#Check balance does not go negative upon txn generation
-def gen_txns_periodically():
-    txn_id=0
-    t_end = time.time() + 1
-    while time.time() < t_end:
-        txn=Single_Transaction(txn_id)
-        payer_node_id=randint(1,total_nodes)
-        recipient_node_id=randint(1,total_nodes)
-        while (recipient_node_id==payer_node_id):
-            recipient_node_id=randint(1,total_nodes)
-        amount=randint(0,100)
-        txn.gen_txn_details(payer_node_id,recipient_node_id,amount)    
-        txn_id=txn_id+1
-        print("Txnid",txn_id,"Node ",payer_node_id," pays","Node ",recipient_node_id," ",amount," BTC$")
-        #Global list containing list of events
-        #Add time-stamp concept and event listed to be always sorted by time stamp
-        event_list.append(["Single Transaction",txn])
-        time.sleep(0.01)
-
 #Check for connectedness
 def check_connectedness(visited_nodes,node_graph,current_node,total_nodes):
     if current_node not in visited_nodes:
@@ -113,6 +70,22 @@ def check_connectedness(visited_nodes,node_graph,current_node,total_nodes):
         #print("Graph is connected!")
         #print(visited_nodes)
         return True
+
+
+
+def latency(sender_node,receiver_node,message_bits):
+    if sender_node.speed=='Fast' and receiver_node.speed=='Fast':
+        link_speed=100
+    else:
+        link_speed=5
+    light_delay=randint(10,500)
+    queue_delay=random.exponential(scale=96/link_speed)
+    overall_delay=light_delay+(message_bits/link_speed)+queue_delay
+    return overall_delay
+
+
+
+
 class Node:
     def __init__(self,id):
         self.id=id
@@ -127,7 +100,7 @@ class Node:
         #2. Each should be an instance of the "Block" class
         #Structure should be probbly a tree???
         #self.blochchain
-        #self.received_txn_ids=[]
+        self.received_txn_ids=[]
 
     #txn will be of Class "Single_Transaction"
     def add_to_txn_pool(self,txn):
@@ -147,10 +120,6 @@ class Single_Transaction:
 
 def Broadcast(transaction):
     pass
-
-
-
-
 
 class Block:
     def __init__(self,id):
@@ -181,34 +150,129 @@ class Block:
         for txn in block_txns:
             self.add_txn_to_block(txn)
 
+class TxnEvent:
+    def __init__(self,id):
+        self.id=id
+        self.type=""
+        self.timestamp=0
+        self.triggered_by=""
+        self.details=""
 
-def latency(sender_node,receiver_node,message_bits):
-    if sender_node.speed=='Fast' and receiver_node.speed=='Fast':
-        link_speed=100
-    else:
-        link_speed=5
-    light_delay=randint(10,500)
-    queue_delay=random.exponential(scale=96/link_speed)
-    overall_delay=light_delay+(message_bits/link_speed)+queue_delay
-    return overall_delay
+class ReceiveEvent:
+    def __init__(self,id):
+        self.id=id
+        self.type=""
+        self.timestamp=0
+        self.sender_node=""
+        self.receiver_node=""
+        self.details=""
+
+
+
+def gen_first_txn():
+    #event_id=global variable with inital value =0
+    txn=Single_Transaction(event_id)
+    payer_node_id=randint(1,total_nodes)
+    recipient_node_id=randint(1,total_nodes)
+    while (recipient_node_id==payer_node_id):
+        recipient_node_id=randint(1,total_nodes)
+    amount=randint(0,100)
+    txn.gen_txn_details(payer_node_id,recipient_node_id,amount)    
+    print("Txnid",0,"Node ",payer_node_id," pays","Node ",recipient_node_id," ",amount," BTC$ at 0",)
+    event=TxnEvent(0)
+    event.type="GenerateTxn"
+    event.timestamp=0
+    event.triggered_by=all_nodes_dict[payer_node_id]
+    event.details=txn
+    #Global list containing list of events
+    event_list.append(event)
+
+
+
+
+def gen_txn(event):
+    event_id=event_id+1
+    next_event_id=event_id
+    txn=Single_Transaction(next_event_id)
+    payer_node_id=randint(1,total_nodes)
+    recipient_node_id=randint(1,total_nodes)
+    while (recipient_node_id==payer_node_id):
+        recipient_node_id=randint(1,total_nodes)
+    amount=randint(1,100)
+    txn.gen_txn_details(payer_node_id,recipient_node_id,amount)
+    next_event=TxnEvent(next_event_id)
+    next_event.type="GenerateTxn"
+    next_event.timestamp=event.timestamp+random.exponential(scale=Ttx)
+    next_event.triggered_by=all_nodes_dict[payer_node_id]
+    next_event.details=txn
+    print("Txnid",next_event_id,"Node ",payer_node_id," pays","Node ",recipient_node_id," ",amount," BTC$"," at ",next_event.timestamp)
+    #Global list containing list of events
+    event_list.append(next_event)
+
+def gen_receive_txn(event,sender_node,receiver_node,message_size):
+    event_id=event_id+1
+    next_event_id=event_id
+    next_event=ReceiveEvent(next_event_id)
+    next_event.type="ReceiveTxn"
+    next_event.timestamp=event.timestamp+latency(sender_node,receiver_node,message_size)
+    next_event.sender_node=sender_node
+    next_event.receiver_node=receiver_node
+    next_event.details=event.details
+    event_list.append(next_event)
+
+
+
+
+
+#Periodically Generate Transactions
+#To DO: Time Delay should be an exponenetial Distribution
+#Check balance does not go negative upon txn generation
+
 
 
 
 #Testing working of Latency Calculations
-def generate_latency_graph(node_graph):
-    for i in range(len(node_graph)):
-        for peer_node in node_graph[i+1]:
-            overall_delay=latency(Node(i+1),Node(peer_node),1000)
-            print("Sender=",i+1,"Receiver=",peer_node,"Latency",overall_delay)
+# def generate_latency_graph(node_graph):
+#     for i in range(len(node_graph)):
+#         for peer_node in node_graph[i+1]:
+#             overall_delay=latency(Node(i+1),Node(peer_node),1000)
+#             print("Sender=",i+1,"Receiver=",peer_node,"Latency",overall_delay)
 
+#generate_latency_graph(node_graph)
+
+
+#!!!!!!!!!!! MAIN!!!!!!!!!!!!!!!!!!!!!!!! 
 node_graph,node_speed,node_hash,total_nodes,init_node_bal = network_topology()
-generate_latency_graph(node_graph)
+#A Global Dictionary to Store node_num as key mapped to its node object
+all_nodes_dict={}
+#Initialzing Nodes:
+for i in range(total_nodes):
+    all_nodes_dict[i+1]=Node(i+1)
+#def gen_receive(sender_node,receiver_node,message_details):
+
+#Event Ids
+event_id=0
 event_list = []
-gen_txns_periodically()
-for elem in event_list:
-    print(elem)
+gen_first_txn()
+#Event Handler:
+for event in event_list:
+    if event.type=="GenerateTxn":
+        #Generate Txn triggers another Generate Txn
+        gen_txn(event)
+        print("Initiator is",event.triggered_by.id)
+        for peer in event.triggered_by.peers:
+            message_delay=latency(event.triggered_by,all_nodes_dict[peer],1000)
+            print("Latency is",message_delay)
+            sender_node=event.triggered_by
+            receiver_node=all_nodes_dict[peer]
+            message_size=1024
+            gen_receive_txn(event,sender_node,receiver_node,message_size)
 
 
+            
+        
+
+        
 
 
 #Function for latency

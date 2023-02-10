@@ -31,6 +31,7 @@ from random import randint
 from numpy import random
 import time
 import sys
+import heapq as hq
 
 
 class Node:
@@ -39,6 +40,7 @@ class Node:
         self.speed = speed
         self.hash_power = hash_power
         self.unspent_txn_pool = []
+        self.seen_txn_id=[]
         #Bal_Sheet better at Block Level
         #self.bal_sheet={}
         #What will be the structire of the blockchain:
@@ -194,9 +196,10 @@ def gen_initial_txns(ttx, current_time = 0):
     global txn_count
     global event_count
 
-    for i in range(500):        
-        event_list = []
-        prev_txn_time = current_time
+    prev_txn_time = current_time
+    event_list = []
+    num_intial_txns=10
+    for i in range(num_intial_txns):        
         payer_node_id = randint(1,total_nodes)
         recipient_node_id = randint(1,total_nodes)
         while (recipient_node_id == payer_node_id):
@@ -208,11 +211,14 @@ def gen_initial_txns(ttx, current_time = 0):
         duration = random.exponential(scale = ttx)        
 
         txn_execution_time = prev_txn_time + duration
+        #print("txn execution time",txn_execution_time)
         txn_event = Event(event_count, txn_execution_time, "generate_txn", txn, nodes[payer_node_id])
+        print("Event Count",event_count)
         event_count += 1
+        
         #Global list containing list of events
         #Add time-stamp concept and event listed to be always sorted by time stamp
-        event_list.append(txn_event)
+        hq.heappush(event_list,(txn_execution_time,txn_event))
         prev_txn_time = txn_execution_time
     return event_list
 
@@ -306,7 +312,74 @@ if __name__ == "__main__":
     # generate_latency_graph(node_graph)
     event_list = gen_initial_txns(ttx)
 
-    
+    #Event Handler
+    print("Event list length is",len(event_list))
+    while (len(event_list)!=0):
+        tuple=hq.heappop(event_list)
+        event=tuple[1]
+        if event.event_type=="generate_txn":
+            print("Detected Generate_txn")
+            print("Execution_time is",event.execution_time)
+            src_node=event.src_node
+            src_node.seen_txn_id.append(event.event_packet.id)
+            for peer_node in node_graph[src_node]:
+                #message size of single trasaction is 1024 bits
+                prev_execution_time=event.execution_time
+                print("Previous exec time of event is",prev_execution_time)
+                latency_delay=latency(src_node,peer_node,1024)
+                execution_time=prev_execution_time+latency_delay
+                print("New exec time of event is",execution_time)
+                event_packet=event.event_packet
+                print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
+                print("Event Count",event_count)
+                event_count+=1
+                receive_event=Event(event_count,execution_time,"receive_txn",event_packet,src_node,peer_node)
+                hq.heappush(event_list,(execution_time,receive_event))
+
+        elif event.event_type=="generate_block":
+            pass
+        elif event.event_type=="receive_txn":
+            #the target node of previous event is the source node for the next receive event triggered
+            src_node=event.tgt_node
+            prev_src_node=event.src_node
+            print("Detected Receive_txn!!")
+            print("Execution_time is",event.execution_time)
+            if (event.event_packet.id not in src_node.seen_txn_id):
+                print("Sendin Txn id",event.event_packet.id,"from node",src_node.id,"to its peers")
+                src_node.seen_txn_id.append(event.event_packet.id)
+                for peer_node in node_graph[src_node]:
+                    if (peer_node.id != prev_src_node.id):
+                        print("Generating receive txn from node ",src_node.id,"to peer node ",peer_node.id)
+                        #message size of single trasaction is 1024 bits
+                        prev_execution_time=event.execution_time
+                        print("Previous exec time of event is",prev_execution_time)
+                        latency_delay=latency(src_node,peer_node,1024)
+                        execution_time=prev_execution_time+latency_delay
+                        print("New exec time of event is",execution_time)
+                        event_packet=event.event_packet
+                        print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
+                        print("Event Count",event_count)
+                        event_count+=1
+                        receive_event=Event(event_count,execution_time,"receive_txn",event_packet,src_node,peer_node)
+                        hq.heappush(event_list,(execution_time,receive_event))
+                    else:
+                        print("Not sending receive txn from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
+
+            else:
+                print("Discarding Txn id",event.event_packet.id,"as it already sent from node",src_node.id)
+
+
+
+        elif event.event_type=="receive_block":
+            pass 
+    print("Event list length is",len(event_list))
+    # count=0
+    # for id in nodes.keys():
+    #     count+=1
+    #     print("Length of seen_txn_id is",len(nodes[id].seen_txn_id))
+    #     for seen_txn_id in nodes[id].seen_txn_id:
+    #         print(seen_txn_id)
+    # print(count)
 
 
 
