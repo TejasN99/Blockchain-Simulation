@@ -1,0 +1,81 @@
+Number of nodes: 15
+
+Node ID: 1
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 2
+Number of txns in unspent_txn_pool: 15
+Currently mining on: 2
+Number of leaf blocks: 2
+Node ID: 3
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 4
+Number of txns in unspent_txn_pool: 15
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 5
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 2
+Number of leaf blocks: 2
+Node ID: 6
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 2
+Number of leaf blocks: 2
+Node ID: 7
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 8
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 2
+Number of leaf blocks: 2
+Node ID: 9
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 10
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 2
+Number of leaf blocks: 2
+Node ID: 11
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 12
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 13
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 14
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Node ID: 15
+Number of txns in unspent_txn_pool: 2
+Currently mining on: 4
+Number of leaf blocks: 2
+Current Time: 20000
+
+Current state of event_list:
+generate_block at 27287.74795053483
+generate_block at 28835.319206480748
+generate_block at 30422.337338707737
+generate_block at 42943.16364991773
+generate_block at 49067.879368876165
+generate_block at 45917.94734642141
+generate_block at 59288.62759962417
+generate_block at 70728.21752829023
+generate_block at 332723.6135374255
+generate_block at 83829.6786604236
+generate_block at 181992.03121782752
+generate_block at 271857.60076131305
+generate_block at 739053.6550507509
+generate_block at 86932.06909929088
+generate_block at 95991.00470019555
+955654.4167779441
