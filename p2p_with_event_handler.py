@@ -180,6 +180,7 @@ def generate_valid_txn_list(node):
     else:
         coinbase_txn = Single_Transaction(None, node, 50)
         txn_list.append(coinbase_txn)
+        balance_sheet[node.id] += 50    # Coinbase txn
         return txn_list, balance_sheet
 
 def network_topology():
@@ -314,8 +315,8 @@ def start_mining(event_list, ttx):
         #     new_block = Block(node, node.mining_on, txn_list, new_balance_sheet)
         #     mining_event = Event(execution_time, "generate_block", new_block, node)
         #     hq.heappush(event_list,(execution_time, mining_event))
-        retry_mining_event = Event(2*ttx + c, "retry_mining", None, node)
-        hq.heappush(event_list, (2*ttx + c, retry_mining_event))
+        retry_mining_event = Event(ttx + c, "retry_mining", None, node)
+        hq.heappush(event_list, (ttx + c, retry_mining_event))
         c += 1    
 
 #Check for connectedness
@@ -635,8 +636,8 @@ if __name__ == "__main__":
                 print("Generate txn ID:", event[1].event_packet.id)
             print("Execution Time:", event[0])
 
-        if cur_time % 10000 == 0:
-            f = open("log.txt", "w")
+        if cur_time % 1000 == 0:
+            f = open("log_" + str(cur_time) + ".txt", "w")
             f.write("Number of nodes: " + str(total_nodes) +"\n")
             for node in nodes.values():
                 f.write("\nNode ID: " + str(node.id) + "\n")
@@ -648,6 +649,8 @@ if __name__ == "__main__":
             f.write("\n\nCurrent state of event_list:\n")
             for event in event_list:
                 f.write(event[1].event_type + " at " + str(event[0]) + "\n")
+                f.write("src_node: " + str(event[1].src_node.id) + "\n")
+                f.write("src_node: " + str(event[1].event_packet.id) + "\n")
 
 
 

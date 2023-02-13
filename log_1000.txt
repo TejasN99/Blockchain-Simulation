@@ -1,0 +1,2051 @@
+Number of nodes: 16
+
+Node ID: 1
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 2
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 3
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 4
+Number of txns in unspent_txn_pool: 15
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 5
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 6
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 7
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 8
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 9
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 10
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 11
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 12
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 13
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 14
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 15
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 16
+Number of txns in unspent_txn_pool: 16
+Currently mining on: 0
+Number of leaf blocks: 1
+Current Time: 1000
+
+Current state of event_list:
+receive_txn at 439.6315368271568
+src_node: 14
+src_node: 14
+receive_txn at 439.7646833906673
+src_node: 3
+src_node: 7
+receive_txn at 440.05879141281974
+src_node: 8
+src_node: 7
+receive_txn at 440.4270589004566
+src_node: 15
+src_node: 9
+receive_txn at 440.2411500382969
+src_node: 12
+src_node: 7
+receive_txn at 441.0469609739065
+src_node: 2
+src_node: 13
+receive_txn at 440.2811198213957
+src_node: 12
+src_node: 12
+receive_txn at 441.14459638651226
+src_node: 15
+src_node: 6
+receive_txn at 441.71983774640853
+src_node: 4
+src_node: 1
+receive_txn at 441.2101147970534
+src_node: 13
+src_node: 11
+receive_txn at 440.6793262976624
+src_node: 5
+src_node: 16
+receive_txn at 451.2388878125939
+src_node: 10
+src_node: 3
+receive_txn at 441.2384190147934
+src_node: 2
+src_node: 2
+receive_txn at 440.48182753264246
+src_node: 5
+src_node: 11
+receive_txn at 441.97258678973276
+src_node: 13
+src_node: 8
+receive_txn at 442.44103998266894
+src_node: 10
+src_node: 13
+receive_txn at 444.55876154120466
+src_node: 13
+src_node: 2
+receive_txn at 445.9245236886996
+src_node: 7
+src_node: 7
+receive_txn at 442.1391380611677
+src_node: 8
+src_node: 4
+receive_txn at 447.0043466406983
+src_node: 7
+src_node: 15
+receive_txn at 442.08423624694393
+src_node: 7
+src_node: 6
+receive_txn at 445.1007194982154
+src_node: 13
+src_node: 5
+receive_txn at 446.00108164310296
+src_node: 10
+src_node: 16
+receive_txn at 453.5548764770611
+src_node: 3
+src_node: 12
+receive_txn at 457.97301905033277
+src_node: 12
+src_node: 7
+receive_txn at 442.99686016405127
+src_node: 7
+src_node: 3
+receive_txn at 447.7378928676148
+src_node: 11
+src_node: 7
+receive_txn at 444.15292838844664
+src_node: 2
+src_node: 10
+receive_txn at 441.35719572310734
+src_node: 9
+src_node: 16
+receive_txn at 443.93339316105187
+src_node: 1
+src_node: 9
+receive_txn at 458.9818371132709
+src_node: 3
+src_node: 4
+receive_txn at 442.7779685672145
+src_node: 2
+src_node: 8
+receive_txn at 444.8222119539172
+src_node: 13
+src_node: 4
+receive_txn at 447.9952207857985
+src_node: 6
+src_node: 3
+receive_txn at 448.04921610906376
+src_node: 8
+src_node: 6
+receive_txn at 452.16396707483017
+src_node: 13
+src_node: 7
+receive_txn at 447.2830022332304
+src_node: 5
+src_node: 15
+receive_txn at 444.56747963030756
+src_node: 5
+src_node: 15
+receive_txn at 442.69594289271777
+src_node: 16
+src_node: 1
+receive_txn at 456.96847523574365
+src_node: 12
+src_node: 8
+receive_txn at 455.2907891779883
+src_node: 3
+src_node: 16
+receive_txn at 457.23895275403675
+src_node: 8
+src_node: 11
+receive_txn at 442.8358798516061
+src_node: 3
+src_node: 9
+receive_txn at 446.2762560633499
+src_node: 3
+src_node: 16
+receive_txn at 454.1057926716983
+src_node: 6
+src_node: 6
+receive_txn at 448.72980339847544
+src_node: 11
+src_node: 15
+receive_txn at 451.20563463623137
+src_node: 7
+src_node: 10
+receive_txn at 466.04418473732056
+src_node: 3
+src_node: 12
+receive_txn at 458.06898754202433
+src_node: 4
+src_node: 6
+receive_txn at 467.8334584425221
+src_node: 3
+src_node: 10
+receive_txn at 469.1398779802381
+src_node: 16
+src_node: 3
+receive_txn at 443.7073553916694
+src_node: 6
+src_node: 12
+receive_txn at 448.06689232817854
+src_node: 10
+src_node: 3
+receive_txn at 455.9418323790502
+src_node: 11
+src_node: 4
+receive_txn at 460.5603173978046
+src_node: 3
+src_node: 1
+receive_txn at 454.2177237538307
+src_node: 2
+src_node: 10
+receive_txn at 457.5907569767804
+src_node: 5
+src_node: 16
+receive_txn at 448.02126689896363
+src_node: 1
+src_node: 13
+receive_txn at 462.5621909566684
+src_node: 12
+src_node: 7
+receive_txn at 452.6754622403572
+src_node: 8
+src_node: 7
+receive_txn at 450.82722489895735
+src_node: 5
+src_node: 10
+receive_txn at 462.0221680704191
+src_node: 14
+src_node: 12
+receive_txn at 461.44350495119727
+src_node: 13
+src_node: 15
+receive_txn at 454.9601997696612
+src_node: 10
+src_node: 13
+receive_txn at 464.00993288987365
+src_node: 5
+src_node: 10
+receive_txn at 466.73792334801146
+src_node: 10
+src_node: 2
+receive_txn at 450.8122886758353
+src_node: 14
+src_node: 7
+receive_txn at 459.8701834327019
+src_node: 6
+src_node: 16
+receive_txn at 448.1314926954651
+src_node: 5
+src_node: 8
+receive_txn at 448.928889674583
+src_node: 12
+src_node: 6
+receive_txn at 456.7154272969241
+src_node: 6
+src_node: 11
+receive_txn at 466.5830794070613
+src_node: 5
+src_node: 7
+receive_txn at 470.55039339096345
+src_node: 2
+src_node: 1
+receive_txn at 450.1767235414235
+src_node: 10
+src_node: 1
+receive_txn at 459.4573982281891
+src_node: 12
+src_node: 10
+receive_txn at 448.7918157557952
+src_node: 5
+src_node: 14
+receive_txn at 445.4168179439196
+src_node: 4
+src_node: 5
+receive_txn at 455.45611733831834
+src_node: 13
+src_node: 16
+receive_txn at 445.20641310555703
+src_node: 5
+src_node: 10
+receive_txn at 464.39101476282906
+src_node: 12
+src_node: 2
+receive_txn at 460.2609729759754
+src_node: 2
+src_node: 1
+receive_txn at 465.6694353118271
+src_node: 16
+src_node: 10
+receive_txn at 463.47734610047246
+src_node: 10
+src_node: 10
+receive_txn at 463.4664909084662
+src_node: 12
+src_node: 4
+receive_txn at 476.947064689588
+src_node: 7
+src_node: 7
+receive_txn at 449.2302622240483
+src_node: 3
+src_node: 9
+receive_txn at 443.5408573962985
+src_node: 15
+src_node: 11
+receive_txn at 449.88224842876673
+src_node: 6
+src_node: 13
+receive_txn at 476.25792489888875
+src_node: 2
+src_node: 9
+receive_txn at 455.44723927765483
+src_node: 7
+src_node: 9
+receive_txn at 468.6609051482965
+src_node: 10
+src_node: 12
+receive_txn at 473.263600196041
+src_node: 5
+src_node: 8
+receive_txn at 482.2323753973792
+src_node: 7
+src_node: 4
+receive_txn at 458.46157320431297
+src_node: 11
+src_node: 13
+receive_txn at 452.9544500463489
+src_node: 4
+src_node: 9
+receive_txn at 495.9937438725516
+src_node: 5
+src_node: 4
+receive_txn at 472.526347764515
+src_node: 3
+src_node: 12
+receive_txn at 507.3946100595528
+src_node: 16
+src_node: 7
+receive_txn at 477.388570727777
+src_node: 5
+src_node: 9
+receive_txn at 468.9886310235999
+src_node: 1
+src_node: 7
+receive_txn at 494.4308485423732
+src_node: 11
+src_node: 13
+receive_txn at 489.19542768734095
+src_node: 14
+src_node: 11
+receive_txn at 491.73351813521316
+src_node: 7
+src_node: 7
+receive_txn at 476.0572742029483
+src_node: 3
+src_node: 6
+receive_txn at 461.63177433890314
+src_node: 5
+src_node: 1
+receive_txn at 465.9657487688087
+src_node: 8
+src_node: 16
+receive_txn at 452.1661007283354
+src_node: 8
+src_node: 16
+receive_txn at 460.6696565448967
+src_node: 7
+src_node: 12
+receive_txn at 467.14071831937684
+src_node: 4
+src_node: 11
+receive_txn at 463.9502923588027
+src_node: 8
+src_node: 11
+receive_txn at 462.83180674635184
+src_node: 6
+src_node: 12
+receive_txn at 465.81700338621556
+src_node: 14
+src_node: 1
+receive_txn at 484.54201585871203
+src_node: 9
+src_node: 4
+receive_txn at 478.79730840140473
+src_node: 5
+src_node: 5
+receive_txn at 477.9790825643379
+src_node: 16
+src_node: 8
+receive_txn at 483.09419068442884
+src_node: 2
+src_node: 9
+receive_txn at 464.7564833526411
+src_node: 7
+src_node: 1
+receive_txn at 478.66157555714085
+src_node: 8
+src_node: 1
+receive_txn at 481.0589434275007
+src_node: 7
+src_node: 8
+receive_txn at 472.2120769600802
+src_node: 1
+src_node: 6
+receive_txn at 453.82413324473015
+src_node: 9
+src_node: 9
+receive_txn at 456.9619650854686
+src_node: 13
+src_node: 7
+receive_txn at 461.93847743460447
+src_node: 7
+src_node: 11
+receive_txn at 485.83657067320365
+src_node: 12
+src_node: 11
+receive_txn at 484.6384789265378
+src_node: 3
+src_node: 2
+receive_txn at 496.2765039114329
+src_node: 16
+src_node: 9
+receive_txn at 464.9290631513627
+src_node: 4
+src_node: 10
+receive_txn at 489.35234183015507
+src_node: 7
+src_node: 16
+receive_txn at 482.8158339194991
+src_node: 3
+src_node: 7
+receive_txn at 464.0826071589265
+src_node: 5
+src_node: 14
+receive_txn at 506.04895101754244
+src_node: 10
+src_node: 4
+receive_txn at 476.22349846976897
+src_node: 7
+src_node: 1
+receive_txn at 506.71505148285354
+src_node: 5
+src_node: 8
+receive_txn at 484.3663281128107
+src_node: 16
+src_node: 12
+receive_txn at 456.95533971548275
+src_node: 11
+src_node: 3
+receive_txn at 571.737234097365
+src_node: 6
+src_node: 16
+receive_txn at 488.53181589316796
+src_node: 5
+src_node: 5
+receive_txn at 448.20863092204775
+src_node: 1
+src_node: 3
+receive_txn at 461.9313410553593
+src_node: 4
+src_node: 10
+receive_txn at 487.03158349788725
+src_node: 8
+src_node: 2
+receive_txn at 477.7923637638583
+src_node: 7
+src_node: 2
+receive_txn at 459.09050617916347
+src_node: 11
+src_node: 9
+receive_txn at 477.82375286516105
+src_node: 8
+src_node: 12
+receive_txn at 470.3851758758813
+src_node: 15
+src_node: 15
+receive_txn at 511.63934102640485
+src_node: 16
+src_node: 10
+receive_txn at 472.11697088079785
+src_node: 11
+src_node: 16
+receive_txn at 524.1491396032575
+src_node: 9
+src_node: 8
+receive_txn at 452.02605331571544
+src_node: 10
+src_node: 1
+receive_txn at 492.10970146485545
+src_node: 10
+src_node: 15
+receive_txn at 491.5759069908338
+src_node: 1
+src_node: 7
+receive_txn at 460.1241293893365
+src_node: 4
+src_node: 1
+receive_txn at 457.17305540084874
+src_node: 2
+src_node: 7
+receive_txn at 489.3106526004203
+src_node: 12
+src_node: 16
+receive_txn at 450.969636400839
+src_node: 6
+src_node: 2
+receive_txn at 501.44188016119006
+src_node: 8
+src_node: 4
+receive_txn at 467.3230566849189
+src_node: 6
+src_node: 6
+receive_txn at 469.90142512665204
+src_node: 9
+src_node: 6
+receive_txn at 446.2038485464582
+src_node: 1
+src_node: 5
+receive_txn at 479.99491890591696
+src_node: 9
+src_node: 11
+receive_txn at 476.8993768302523
+src_node: 1
+src_node: 5
+receive_txn at 469.2691139565061
+src_node: 16
+src_node: 13
+receive_txn at 463.756414028206
+src_node: 14
+src_node: 3
+receive_txn at 472.5932008031324
+src_node: 14
+src_node: 4
+receive_txn at 559.8977400914155
+src_node: 7
+src_node: 13
+receive_txn at 498.51830649363893
+src_node: 4
+src_node: 16
+receive_txn at 494.380257069226
+src_node: 4
+src_node: 16
+receive_txn at 498.1115926841827
+src_node: 12
+src_node: 4
+receive_txn at 493.4360878693722
+src_node: 5
+src_node: 8
+receive_txn at 505.2751725804308
+src_node: 7
+src_node: 15
+receive_txn at 490.8711941903374
+src_node: 7
+src_node: 8
+receive_txn at 506.6988286572556
+src_node: 7
+src_node: 8
+receive_txn at 458.84505365921586
+src_node: 3
+src_node: 9
+receive_txn at 553.655499831654
+src_node: 3
+src_node: 9
+receive_txn at 491.7930077503383
+src_node: 1
+src_node: 11
+receive_txn at 512.8045518215833
+src_node: 11
+src_node: 14
+receive_txn at 502.22592357196726
+src_node: 10
+src_node: 6
+receive_txn at 518.9124541813048
+src_node: 10
+src_node: 6
+receive_txn at 486.23029130482473
+src_node: 10
+src_node: 9
+receive_txn at 491.21144040046323
+src_node: 3
+src_node: 3
+receive_txn at 490.2725513487258
+src_node: 2
+src_node: 2
+receive_txn at 455.68018268225484
+src_node: 7
+src_node: 9
+receive_txn at 525.3636213438584
+src_node: 8
+src_node: 10
+receive_txn at 473.15830284169914
+src_node: 12
+src_node: 13
+receive_txn at 490.2573520422774
+src_node: 9
+src_node: 6
+receive_txn at 498.76775458019716
+src_node: 16
+src_node: 16
+receive_txn at 524.6561805710968
+src_node: 4
+src_node: 15
+receive_txn at 518.4326017010577
+src_node: 3
+src_node: 10
+receive_txn at 481.51361257467204
+src_node: 3
+src_node: 11
+receive_txn at 512.4831069993394
+src_node: 13
+src_node: 4
+receive_txn at 475.2632548287294
+src_node: 16
+src_node: 9
+receive_txn at 485.5849525154877
+src_node: 16
+src_node: 11
+receive_txn at 570.4334289614577
+src_node: 5
+src_node: 4
+receive_txn at 516.830234800639
+src_node: 12
+src_node: 5
+receive_txn at 537.9910982567275
+src_node: 5
+src_node: 3
+receive_txn at 533.7181080965793
+src_node: 11
+src_node: 2
+receive_txn at 535.3529437731092
+src_node: 4
+src_node: 6
+receive_txn at 533.2479511463303
+src_node: 14
+src_node: 1
+receive_txn at 504.9610171849775
+src_node: 11
+src_node: 6
+receive_txn at 510.75428511399866
+src_node: 2
+src_node: 9
+receive_txn at 498.5787732755398
+src_node: 15
+src_node: 11
+receive_txn at 471.1762462717312
+src_node: 13
+src_node: 10
+receive_txn at 515.7440709018178
+src_node: 9
+src_node: 15
+receive_txn at 511.9022765383562
+src_node: 15
+src_node: 10
+receive_txn at 513.0938654932238
+src_node: 4
+src_node: 14
+receive_txn at 535.095786520593
+src_node: 6
+src_node: 7
+receive_txn at 540.4873554609803
+src_node: 16
+src_node: 14
+receive_txn at 524.5675196909418
+src_node: 14
+src_node: 6
+receive_txn at 556.224951910953
+src_node: 1
+src_node: 14
+receive_txn at 511.89638050281053
+src_node: 7
+src_node: 15
+receive_txn at 513.123196774659
+src_node: 7
+src_node: 3
+receive_txn at 534.0437358464825
+src_node: 7
+src_node: 5
+receive_txn at 488.0080015866032
+src_node: 4
+src_node: 12
+receive_txn at 474.87844022586705
+src_node: 16
+src_node: 3
+receive_txn at 464.1784496491496
+src_node: 7
+src_node: 12
+receive_txn at 456.1101180459806
+src_node: 11
+src_node: 4
+receive_txn at 585.3586618497357
+src_node: 8
+src_node: 14
+receive_txn at 508.5314711246516
+src_node: 15
+src_node: 3
+receive_txn at 550.5489932303232
+src_node: 11
+src_node: 10
+receive_txn at 512.1401192779908
+src_node: 4
+src_node: 11
+receive_txn at 485.7745503632187
+src_node: 3
+src_node: 1
+receive_txn at 467.43870996331714
+src_node: 16
+src_node: 10
+receive_txn at 497.8242832764376
+src_node: 10
+src_node: 16
+receive_txn at 493.28372339762217
+src_node: 1
+src_node: 11
+receive_txn at 471.80896968969455
+src_node: 1
+src_node: 7
+receive_txn at 469.53348103962924
+src_node: 2
+src_node: 10
+receive_txn at 490.8796628413664
+src_node: 11
+src_node: 10
+receive_txn at 493.4101313929138
+src_node: 16
+src_node: 8
+receive_txn at 521.1343412481026
+src_node: 5
+src_node: 16
+receive_txn at 535.6719406844315
+src_node: 5
+src_node: 16
+receive_txn at 541.4162030919964
+src_node: 13
+src_node: 9
+receive_txn at 494.04127238715023
+src_node: 6
+src_node: 15
+receive_txn at 518.3429322214757
+src_node: 15
+src_node: 16
+receive_txn at 531.9349197803033
+src_node: 13
+src_node: 16
+receive_txn at 498.9939662415592
+src_node: 4
+src_node: 13
+receive_txn at 529.813785877652
+src_node: 4
+src_node: 1
+receive_txn at 537.9609958102666
+src_node: 6
+src_node: 12
+receive_txn at 507.7087923394007
+src_node: 11
+src_node: 1
+receive_txn at 531.7749140709466
+src_node: 9
+src_node: 8
+receive_txn at 497.8468232151456
+src_node: 6
+src_node: 14
+receive_txn at 490.9596027044117
+src_node: 3
+src_node: 8
+receive_txn at 531.5449469532964
+src_node: 1
+src_node: 10
+receive_txn at 492.04075697428493
+src_node: 15
+src_node: 8
+receive_txn at 459.32410656556897
+src_node: 10
+src_node: 14
+receive_txn at 549.2024804063209
+src_node: 7
+src_node: 5
+receive_txn at 514.9048835200945
+src_node: 15
+src_node: 1
+receive_txn at 489.8224947906985
+src_node: 13
+src_node: 8
+receive_txn at 477.2938213514143
+src_node: 13
+src_node: 8
+receive_txn at 510.59462433280623
+src_node: 13
+src_node: 13
+receive_txn at 503.32490790326693
+src_node: 12
+src_node: 1
+receive_txn at 500.47871172570444
+src_node: 16
+src_node: 9
+receive_txn at 564.4674242115484
+src_node: 14
+src_node: 12
+receive_txn at 553.5609096232236
+src_node: 11
+src_node: 14
+receive_txn at 518.8232543884246
+src_node: 13
+src_node: 15
+receive_txn at 512.1753545962587
+src_node: 13
+src_node: 15
+receive_txn at 466.85848202717136
+src_node: 7
+src_node: 13
+receive_txn at 497.5178976240046
+src_node: 11
+src_node: 8
+receive_txn at 516.875026714273
+src_node: 7
+src_node: 16
+receive_txn at 526.8377582419542
+src_node: 3
+src_node: 7
+receive_txn at 508.86453662158567
+src_node: 14
+src_node: 11
+receive_txn at 487.29859472158125
+src_node: 3
+src_node: 6
+receive_txn at 492.03385229705094
+src_node: 14
+src_node: 2
+receive_txn at 570.940988382762
+src_node: 10
+src_node: 3
+receive_txn at 590.6215467755292
+src_node: 14
+src_node: 6
+receive_txn at 533.8257828358487
+src_node: 5
+src_node: 6
+receive_txn at 570.5270612600752
+src_node: 2
+src_node: 16
+receive_txn at 516.3420305965656
+src_node: 1
+src_node: 14
+receive_txn at 551.6552529267486
+src_node: 14
+src_node: 8
+receive_txn at 554.3634214043886
+src_node: 6
+src_node: 9
+receive_txn at 542.7289581319161
+src_node: 3
+src_node: 15
+receive_txn at 493.7544630854413
+src_node: 15
+src_node: 16
+receive_txn at 468.3485506772602
+src_node: 15
+src_node: 13
+receive_txn at 589.2515658760725
+src_node: 8
+src_node: 3
+receive_txn at 595.0729571598598
+src_node: 4
+src_node: 14
+receive_txn at 532.9810192562306
+src_node: 9
+src_node: 3
+receive_txn at 491.34778259824986
+src_node: 1
+src_node: 15
+receive_txn at 476.5600310042237
+src_node: 12
+src_node: 9
+receive_txn at 468.2372166354428
+src_node: 12
+src_node: 9
+receive_txn at 479.2714908438011
+src_node: 13
+src_node: 1
+receive_txn at 463.92746819453095
+src_node: 13
+src_node: 2
+receive_txn at 492.4817851506773
+src_node: 8
+src_node: 2
+receive_txn at 551.1714670255349
+src_node: 11
+src_node: 8
+receive_txn at 503.1861946036717
+src_node: 12
+src_node: 6
+receive_txn at 508.7725724571426
+src_node: 7
+src_node: 2
+receive_txn at 509.84219164155365
+src_node: 7
+src_node: 14
+receive_txn at 502.0970320128673
+src_node: 12
+src_node: 9
+receive_txn at 649.536566184961
+src_node: 12
+src_node: 8
+receive_txn at 479.37573893541185
+src_node: 16
+src_node: 13
+receive_txn at 623.2802934195615
+src_node: 15
+src_node: 13
+receive_txn at 498.73277184448256
+src_node: 6
+src_node: 1
+receive_txn at 528.4101596211385
+src_node: 16
+src_node: 9
+receive_txn at 552.1232909785359
+src_node: 4
+src_node: 7
+receive_txn at 499.2241447152352
+src_node: 3
+src_node: 4
+receive_txn at 505.1591262233855
+src_node: 2
+src_node: 2
+receive_txn at 595.2652511588306
+src_node: 9
+src_node: 3
+receive_txn at 688.2252496021669
+src_node: 2
+src_node: 12
+receive_txn at 555.9610295392056
+src_node: 13
+src_node: 4
+receive_txn at 453.6507690548233
+src_node: 1
+src_node: 6
+receive_txn at 660.2542867421511
+src_node: 10
+src_node: 9
+receive_txn at 630.16761983626
+src_node: 8
+src_node: 3
+receive_txn at 497.811394862739
+src_node: 12
+src_node: 10
+receive_txn at 497.26723900885963
+src_node: 15
+src_node: 2
+receive_txn at 536.5356046379583
+src_node: 5
+src_node: 2
+receive_txn at 461.5583045831425
+src_node: 5
+src_node: 5
+receive_txn at 520.1677259385758
+src_node: 7
+src_node: 1
+receive_txn at 511.680814320027
+src_node: 6
+src_node: 13
+receive_txn at 572.2432875226446
+src_node: 7
+src_node: 5
+receive_txn at 507.9133443487576
+src_node: 13
+src_node: 7
+receive_txn at 486.3255183827098
+src_node: 14
+src_node: 5
+receive_txn at 474.37041791845354
+src_node: 6
+src_node: 2
+receive_txn at 551.8090231954382
+src_node: 10
+src_node: 9
+receive_txn at 502.49425477202874
+src_node: 5
+src_node: 15
+receive_txn at 520.6290861790665
+src_node: 2
+src_node: 14
+receive_txn at 486.8836415565123
+src_node: 12
+src_node: 8
+receive_txn at 470.6236653096463
+src_node: 9
+src_node: 2
+receive_txn at 470.88619554092736
+src_node: 13
+src_node: 16
+receive_txn at 474.30977007670964
+src_node: 5
+src_node: 6
+receive_txn at 508.0625152180961
+src_node: 16
+src_node: 15
+receive_txn at 646.872622244226
+src_node: 14
+src_node: 3
+receive_txn at 616.9676530172901
+src_node: 3
+src_node: 10
+receive_txn at 513.7534841934589
+src_node: 5
+src_node: 7
+receive_txn at 551.6673695258428
+src_node: 3
+src_node: 13
+receive_txn at 478.2748713539524
+src_node: 16
+src_node: 7
+receive_txn at 501.6672323309173
+src_node: 16
+src_node: 13
+receive_txn at 603.4466433583095
+src_node: 12
+src_node: 5
+receive_txn at 465.12654666977056
+src_node: 3
+src_node: 5
+receive_txn at 528.0288988782543
+src_node: 2
+src_node: 1
+receive_txn at 492.6151356308977
+src_node: 14
+src_node: 16
+receive_txn at 630.944384682284
+src_node: 8
+src_node: 15
+receive_txn at 562.28436981918
+src_node: 3
+src_node: 10
+receive_txn at 534.2040483831702
+src_node: 6
+src_node: 3
+receive_txn at 590.0672849042825
+src_node: 15
+src_node: 7
+receive_txn at 497.15309902879847
+src_node: 3
+src_node: 16
+receive_txn at 625.8949274506031
+src_node: 4
+src_node: 16
+receive_txn at 536.427812582104
+src_node: 4
+src_node: 16
+receive_txn at 513.0718088782944
+src_node: 12
+src_node: 4
+receive_txn at 706.0243983419996
+src_node: 10
+src_node: 11
+receive_txn at 702.3388375641897
+src_node: 6
+src_node: 10
+receive_txn at 524.6271900149293
+src_node: 12
+src_node: 2
+receive_txn at 646.5571248553418
+src_node: 7
+src_node: 8
+receive_txn at 525.5792911339647
+src_node: 10
+src_node: 4
+receive_txn at 547.390342828707
+src_node: 7
+src_node: 8
+receive_txn at 510.1368997922997
+src_node: 5
+src_node: 15
+receive_txn at 573.8359767040383
+src_node: 16
+src_node: 4
+receive_txn at 468.6624643930986
+src_node: 5
+src_node: 8
+receive_txn at 514.5259235250568
+src_node: 16
+src_node: 8
+receive_txn at 587.6310664960092
+src_node: 16
+src_node: 4
+receive_txn at 596.5672714645982
+src_node: 3
+src_node: 9
+receive_txn at 578.3444477343886
+src_node: 13
+src_node: 5
+receive_txn at 507.1726991958315
+src_node: 5
+src_node: 9
+receive_txn at 622.4167055146636
+src_node: 1
+src_node: 13
+receive_txn at 607.4438645986627
+src_node: 13
+src_node: 5
+receive_txn at 537.2072182513251
+src_node: 16
+src_node: 11
+receive_txn at 558.4436006052256
+src_node: 7
+src_node: 6
+receive_txn at 603.857597016079
+src_node: 4
+src_node: 16
+receive_txn at 538.4796334083039
+src_node: 2
+src_node: 11
+receive_txn at 511.11815401543515
+src_node: 5
+src_node: 12
+receive_txn at 513.6961297076332
+src_node: 15
+src_node: 7
+receive_txn at 501.7460676440951
+src_node: 5
+src_node: 12
+receive_txn at 505.80512948297667
+src_node: 5
+src_node: 12
+receive_txn at 494.2256576106191
+src_node: 8
+src_node: 10
+receive_txn at 523.2835665849614
+src_node: 8
+src_node: 13
+receive_txn at 485.35723190329605
+src_node: 10
+src_node: 13
+receive_txn at 475.54135652214575
+src_node: 1
+src_node: 12
+receive_txn at 562.8609907472986
+src_node: 7
+src_node: 15
+receive_txn at 529.3583357675856
+src_node: 10
+src_node: 12
+receive_txn at 481.851644312595
+src_node: 13
+src_node: 11
+receive_txn at 477.84631267570205
+src_node: 3
+src_node: 2
+receive_txn at 618.2724631217444
+src_node: 14
+src_node: 12
+receive_txn at 494.27665544037893
+src_node: 6
+src_node: 14
+receive_txn at 538.6295441380073
+src_node: 10
+src_node: 2
+receive_txn at 514.0667127381425
+src_node: 5
+src_node: 7
+receive_txn at 623.0140122306581
+src_node: 16
+src_node: 6
+receive_txn at 671.4243395763511
+src_node: 12
+src_node: 6
+receive_txn at 546.2495104727152
+src_node: 16
+src_node: 9
+receive_txn at 531.1501077425615
+src_node: 13
+src_node: 16
+receive_txn at 496.5754642618338
+src_node: 8
+src_node: 8
+receive_txn at 498.31840077154595
+src_node: 5
+src_node: 8
+receive_txn at 524.0717002619615
+src_node: 8
+src_node: 5
+receive_txn at 572.8868032751327
+src_node: 15
+src_node: 4
+receive_txn at 669.3609341134597
+src_node: 2
+src_node: 15
+receive_txn at 612.7142805598517
+src_node: 4
+src_node: 13
+receive_txn at 555.1240597072313
+src_node: 2
+src_node: 15
+receive_txn at 486.350117263057
+src_node: 2
+src_node: 15
+receive_txn at 579.5038878654464
+src_node: 5
+src_node: 4
+receive_txn at 657.1100525489526
+src_node: 4
+src_node: 3
+receive_txn at 552.7057068806628
+src_node: 8
+src_node: 1
+receive_txn at 539.48498982829
+src_node: 8
+src_node: 5
+receive_txn at 595.8954196587808
+src_node: 9
+src_node: 2
+receive_txn at 560.46849758994
+src_node: 2
+src_node: 6
+receive_txn at 536.1961050878326
+src_node: 16
+src_node: 1
+receive_txn at 633.7979802064917
+src_node: 6
+src_node: 1
+receive_txn at 547.3750165816471
+src_node: 13
+src_node: 6
+receive_txn at 560.3446662482139
+src_node: 13
+src_node: 11
+receive_txn at 656.7675166573713
+src_node: 6
+src_node: 10
+receive_txn at 597.682454633363
+src_node: 15
+src_node: 14
+receive_txn at 598.5930475216493
+src_node: 9
+src_node: 11
+receive_txn at 530.4014517014243
+src_node: 7
+src_node: 14
+receive_txn at 518.7139084300809
+src_node: 5
+src_node: 9
+receive_txn at 515.8701272565786
+src_node: 6
+src_node: 2
+receive_txn at 500.54840005154506
+src_node: 3
+src_node: 4
+receive_txn at 552.6604539125525
+src_node: 15
+src_node: 4
+receive_txn at 519.3468922637812
+src_node: 15
+src_node: 11
+receive_txn at 498.9265535937284
+src_node: 2
+src_node: 4
+receive_txn at 608.1706328622688
+src_node: 15
+src_node: 4
+receive_txn at 537.0875088554761
+src_node: 15
+src_node: 10
+receive_txn at 594.8423434701674
+src_node: 14
+src_node: 11
+receive_txn at 682.3295425227822
+src_node: 14
+src_node: 11
+receive_txn at 539.0819600582774
+src_node: 6
+src_node: 7
+receive_txn at 538.117836459739
+src_node: 8
+src_node: 6
+receive_txn at 625.8131142912459
+src_node: 6
+src_node: 7
+receive_txn at 560.8877850945923
+src_node: 11
+src_node: 6
+receive_txn at 669.9061289032769
+src_node: 4
+src_node: 10
+receive_txn at 547.8787195669552
+src_node: 16
+src_node: 14
+receive_txn at 558.4281326856512
+src_node: 5
+src_node: 13
+receive_txn at 532.8906600573966
+src_node: 7
+src_node: 13
+receive_txn at 590.9641483176986
+src_node: 16
+src_node: 11
+receive_txn at 557.6216093402346
+src_node: 3
+src_node: 11
+receive_txn at 573.0039113143969
+src_node: 2
+src_node: 13
+receive_txn at 520.4362131011538
+src_node: 6
+src_node: 3
+receive_txn at 631.2393466246295
+src_node: 12
+src_node: 1
+receive_txn at 523.9414852335999
+src_node: 10
+src_node: 4
+receive_txn at 567.308249172471
+src_node: 10
+src_node: 4
+receive_txn at 534.9645675446161
+src_node: 4
+src_node: 11
+receive_txn at 517.6909300276486
+src_node: 7
+src_node: 5
+receive_txn at 603.5515721299956
+src_node: 2
+src_node: 4
+receive_txn at 538.7226266811911
+src_node: 4
+src_node: 12
+receive_txn at 516.3220632283702
+src_node: 4
+src_node: 3
+receive_txn at 488.4207781857101
+src_node: 6
+src_node: 11
+receive_txn at 504.576119741926
+src_node: 7
+src_node: 14
+receive_txn at 476.6094670699181
+src_node: 4
+src_node: 3
+receive_txn at 467.6317818298071
+src_node: 4
+src_node: 3
+receive_txn at 592.8717732011704
+src_node: 11
+src_node: 4
+receive_txn at 591.237937787822
+src_node: 11
+src_node: 4
+receive_txn at 584.7054540261202
+src_node: 7
+src_node: 12
+receive_txn at 530.2253810404281
+src_node: 2
+src_node: 5
+receive_txn at 550.7837108201599
+src_node: 7
+src_node: 12
+receive_txn at 655.5184717296931
+src_node: 14
+src_node: 1
+receive_txn at 555.6288529744868
+src_node: 2
+src_node: 15
+receive_txn at 560.5139673523748
+src_node: 16
+src_node: 13
+receive_txn at 497.4067578748383
+src_node: 10
+src_node: 10
+receive_txn at 569.8572066403713
+src_node: 12
+src_node: 10
+receive_txn at 537.4814959361515
+src_node: 2
+src_node: 16
+receive_txn at 503.1078481171203
+src_node: 9
+src_node: 7
+receive_txn at 514.796089321223
+src_node: 10
+src_node: 16
+receive_txn at 532.2123046877323
+src_node: 10
+src_node: 16
+receive_txn at 551.4928420628688
+src_node: 16
+src_node: 11
+receive_txn at 493.9760457014817
+src_node: 10
+src_node: 5
+receive_txn at 514.0574006651519
+src_node: 7
+src_node: 9
+receive_txn at 487.91922317086
+src_node: 5
+src_node: 11
+receive_txn at 541.2869479331125
+src_node: 15
+src_node: 14
+receive_txn at 489.1701696855403
+src_node: 4
+src_node: 4
+receive_txn at 535.0827191676477
+src_node: 13
+src_node: 2
+receive_txn at 593.8430352617811
+src_node: 11
+src_node: 10
+receive_txn at 596.6978523499745
+src_node: 11
+src_node: 2
+receive_txn at 496.24400493770924
+src_node: 11
+src_node: 10
+receive_txn at 585.2698324693536
+src_node: 11
+src_node: 10
+receive_txn at 704.8831990307277
+src_node: 1
+src_node: 14
+receive_txn at 552.1863887405536
+src_node: 13
+src_node: 4
+receive_txn at 585.3373604820442
+src_node: 5
+src_node: 16
+receive_txn at 630.889307415134
+src_node: 15
+src_node: 8
+receive_txn at 576.2171459108415
+src_node: 12
+src_node: 5
+receive_txn at 521.9358939693261
+src_node: 7
+src_node: 14
+receive_txn at 503.458728233826
+src_node: 2
+src_node: 8
+receive_txn at 540.4902516353034
+src_node: 16
+src_node: 8
+receive_txn at 569.9150077307715
+src_node: 10
+src_node: 1
+receive_txn at 535.2069616877893
+src_node: 8
+src_node: 9
+receive_txn at 549.6202001126343
+src_node: 15
+src_node: 14
+receive_txn at 516.7017600506954
+src_node: 13
+src_node: 3
+receive_txn at 585.3417975248042
+src_node: 10
+src_node: 9
+receive_txn at 536.691773081415
+src_node: 11
+src_node: 16
+receive_txn at 598.6416364230902
+src_node: 1
+src_node: 10
+receive_txn at 616.7183249284476
+src_node: 12
+src_node: 5
+receive_txn at 551.895664538228
+src_node: 15
+src_node: 5
+receive_txn at 646.5450393722577
+src_node: 3
+src_node: 6
+receive_txn at 540.0991572259293
+src_node: 6
+src_node: 12
+receive_txn at 546.6968988463183
+src_node: 8
+src_node: 7
+receive_txn at 560.762622188982
+src_node: 6
+src_node: 14
+receive_txn at 528.198470955238
+src_node: 15
+src_node: 9
+receive_txn at 515.7920434498282
+src_node: 1
+src_node: 6
+receive_txn at 664.8778513319312
+src_node: 1
+src_node: 13
+receive_txn at 621.2383477823983
+src_node: 10
+src_node: 2
+receive_txn at 545.4249320411627
+src_node: 3
+src_node: 8
+receive_txn at 565.731643034239
+src_node: 13
+src_node: 15
+receive_txn at 612.9666484140098
+src_node: 1
+src_node: 9
+receive_txn at 580.8544598481376
+src_node: 1
+src_node: 9
+receive_txn at 525.8623693628938
+src_node: 10
+src_node: 14
+receive_txn at 494.8076266723753
+src_node: 16
+src_node: 6
+receive_txn at 551.9987569309496
+src_node: 10
+src_node: 14
+receive_txn at 616.976111842609
+src_node: 15
+src_node: 1
+receive_txn at 598.3260448183945
+src_node: 12
+src_node: 7
+receive_txn at 592.1748190785959
+src_node: 7
+src_node: 16
+receive_txn at 577.0723148538352
+src_node: 1
+src_node: 3
+receive_txn at 526.8682449852795
+src_node: 6
+src_node: 9
+receive_txn at 597.8025058373242
+src_node: 7
+src_node: 11
+receive_txn at 491.5465143539967
+src_node: 13
+src_node: 1
+receive_txn at 570.776192479587
+src_node: 7
+src_node: 11
+receive_txn at 601.1519038496792
+src_node: 7
+src_node: 11
+receive_txn at 655.227214608344
+src_node: 1
+src_node: 15
+receive_txn at 535.6474238424904
+src_node: 4
+src_node: 3
+receive_txn at 502.1069023456191
+src_node: 12
+src_node: 11
+receive_txn at 505.82471649971217
+src_node: 3
+src_node: 10
+receive_txn at 589.900372080723
+src_node: 5
+src_node: 6
+receive_txn at 739.2466836029994
+src_node: 4
+src_node: 7
+receive_txn at 590.1165196006941
+src_node: 2
+src_node: 16
+receive_txn at 588.2410988954858
+src_node: 4
+src_node: 1
+receive_txn at 598.1455152085607
+src_node: 11
+src_node: 14
+receive_txn at 531.329318525205
+src_node: 2
+src_node: 1
+receive_txn at 522.5079776060127
+src_node: 13
+src_node: 15
+receive_txn at 551.5090013530606
+src_node: 1
+src_node: 11
+receive_txn at 543.560031862803
+src_node: 7
+src_node: 13
+receive_txn at 673.6113185386308
+src_node: 2
+src_node: 8
+receive_txn at 712.0146969257713
+src_node: 5
+src_node: 3
+receive_txn at 528.5193245762724
+src_node: 1
+src_node: 10
+receive_txn at 652.4977652180688
+src_node: 10
+src_node: 8
+receive_txn at 602.874752455451
+src_node: 7
+src_node: 16
+receive_txn at 610.7724679365137
+src_node: 3
+src_node: 11
+receive_txn at 554.6615516119859
+src_node: 10
+src_node: 11
+receive_txn at 555.9231633937342
+src_node: 7
+src_node: 5
+receive_txn at 537.1686160177608
+src_node: 2
+src_node: 9
+receive_txn at 504.35461180707415
+src_node: 10
+src_node: 3
+receive_txn at 596.3062144748992
+src_node: 12
+src_node: 2
+receive_txn at 558.5872686728417
+src_node: 8
+src_node: 5
+receive_txn at 505.6694644207699
+src_node: 3
+src_node: 10
+receive_txn at 607.8135945396718
+src_node: 6
+src_node: 8
+receive_txn at 669.2764173081974
+src_node: 12
+src_node: 1
+receive_txn at 726.4213439400677
+src_node: 2
+src_node: 8
+receive_txn at 659.8251183271666
+src_node: 7
+src_node: 15
+receive_txn at 631.5883014385922
+src_node: 13
+src_node: 3
+receive_txn at 657.3499149516142
+src_node: 13
+src_node: 3
+receive_txn at 732.9354428915001
+src_node: 6
+src_node: 11
+receive_txn at 579.3393976591245
+src_node: 7
+src_node: 16
+receive_txn at 550.4962042323026
+src_node: 1
+src_node: 14
+receive_txn at 693.0160878562043
+src_node: 1
+src_node: 14
+receive_txn at 711.5347987631922
+src_node: 14
+src_node: 8
+receive_txn at 565.7847167105075
+src_node: 1
+src_node: 16
+receive_txn at 719.3037517370906
+src_node: 1
+src_node: 12
+receive_txn at 746.5576453191483
+src_node: 1
+src_node: 15
+receive_txn at 568.0554210503293
+src_node: 14
+src_node: 13
+receive_txn at 626.8270993741966
+src_node: 5
+src_node: 13
+receive_txn at 544.5575392699303
+src_node: 9
+src_node: 2
+receive_txn at 504.0310605993892
+src_node: 6
+src_node: 5
+receive_txn at 573.2671948026186
+src_node: 4
+src_node: 1
+receive_txn at 619.3353572060516
+src_node: 3
+src_node: 15
+receive_txn at 604.5385870597439
+src_node: 5
+src_node: 8
+receive_txn at 636.3424630789041
+src_node: 10
+src_node: 9
+receive_txn at 609.6576477814048
+src_node: 9
+src_node: 7
+receive_txn at 613.4093953458137
+src_node: 5
+src_node: 1
+receive_txn at 687.6184043388183
+src_node: 1
+src_node: 5
+receive_txn at 746.3281559115262
+src_node: 5
+src_node: 10
+receive_txn at 714.4699093243844
+src_node: 6
+src_node: 5
+receive_txn at 714.4723445783768
+src_node: 16
+src_node: 12
+receive_txn at 519.3991019780985
+src_node: 13
+src_node: 12
+receive_txn at 494.64700340094237
+src_node: 13
+src_node: 12
+receive_txn at 491.4204702393445
+src_node: 1
+src_node: 3
+receive_txn at 595.7981267693605
+src_node: 1
+src_node: 3
+receive_txn at 666.8931404264572
+src_node: 3
+src_node: 10
+receive_txn at 564.4872615661344
+src_node: 9
+src_node: 14
+receive_txn at 518.403792790743
+src_node: 5
+src_node: 2
+receive_txn at 664.6771149803174
+src_node: 7
+src_node: 16
+receive_txn at 497.1249692133231
+src_node: 12
+src_node: 3
+receive_txn at 551.1758139935355
+src_node: 15
+src_node: 2
+receive_txn at 788.6526065514425
+src_node: 10
+src_node: 15
+receive_txn at 716.3181856469603
+src_node: 12
+src_node: 16
+receive_txn at 553.0424487185869
+src_node: 12
+src_node: 6
+receive_txn at 566.2806051987801
+src_node: 4
+src_node: 7
+receive_txn at 618.0723598016534
+src_node: 14
+src_node: 16
+receive_txn at 837.783144581829
+src_node: 13
+src_node: 2
+receive_txn at 628.4896208956485
+src_node: 7
+src_node: 2
+receive_txn at 653.8611484570147
+src_node: 11
+src_node: 9
+receive_txn at 513.304745498211
+src_node: 8
+src_node: 15
+receive_txn at 608.8260201156577
+src_node: 11
+src_node: 9
+receive_txn at 715.5598306320207
+src_node: 8
+src_node: 9
+receive_txn at 729.1126899314704
+src_node: 15
+src_node: 13
+receive_txn at 856.6924829194122
+src_node: 14
+src_node: 2
+receive_txn at 528.0571111133613
+src_node: 1
+src_node: 15
+receive_txn at 801.6318343867523
+src_node: 13
+src_node: 2
+receive_txn at 655.9438340681326
+src_node: 2
+src_node: 7
+receive_txn at 642.8292385695116
+src_node: 8
+src_node: 14
+receive_txn at 503.2722355624544
+src_node: 13
+src_node: 7
+receive_txn at 559.8018128060087
+src_node: 14
+src_node: 6
+receive_txn at 621.1375931643967
+src_node: 3
+src_node: 14
+receive_txn at 561.4945122846092
+src_node: 7
+src_node: 2
+receive_txn at 594.4264612966097
+src_node: 13
+src_node: 3
+receive_txn at 677.5320683449551
+src_node: 11
+src_node: 3
+receive_txn at 582.3574243028116
+src_node: 2
+src_node: 1
+receive_txn at 544.807655574908
+src_node: 10
+src_node: 15
+receive_txn at 519.238882888426
+src_node: 13
+src_node: 1
+receive_txn at 616.9343460791192
+src_node: 6
+src_node: 5
+receive_txn at 934.4694447822483
+src_node: 15
+src_node: 13
+receive_txn at 805.6845981488322
+src_node: 10
+src_node: 9
+receive_txn at 710.8652605865054
+src_node: 15
+src_node: 14
+receive_txn at 666.2311134085387
+src_node: 8
+src_node: 15
+receive_txn at 723.1301355236016
+src_node: 3
+src_node: 5
+receive_txn at 553.8930897922073
+src_node: 4
+src_node: 8
+receive_txn at 630.4043201018256
+src_node: 1
+src_node: 14
+receive_txn at 881.6796070703123
+src_node: 13
+src_node: 2
+receive_txn at 755.6011586656562
+src_node: 12
+src_node: 2
+receive_txn at 761.3213874455797
+src_node: 4
+src_node: 5
+receive_txn at 844.4076049306649
+src_node: 2
+src_node: 1
+receive_txn at 601.0370780947885
+src_node: 1
+src_node: 12
+receive_txn at 624.3432563259335
+src_node: 12
+src_node: 6
+receive_txn at 762.6572233934129
+src_node: 5
+src_node: 14
+receive_txn at 640.8865305711495
+src_node: 4
+src_node: 5
+receive_txn at 773.5036022380737
+src_node: 9
+src_node: 11
+receive_txn at 605.8386611435999
+src_node: 5
+src_node: 2
+receive_txn at 538.4086995520639
+src_node: 14
+src_node: 2
+receive_txn at 508.57302947375194
+src_node: 3
+src_node: 2
+receive_txn at 529.2117420532078
+src_node: 2
+src_node: 7
+receive_txn at 839.8026620203148
+src_node: 5
+src_node: 14
+receive_txn at 738.8434701061329
+src_node: 8
+src_node: 15
+receive_txn at 553.0695211633581
+src_node: 7
+src_node: 5
+receive_txn at 700.1532482078957
+src_node: 5
+src_node: 13
+receive_txn at 763.9374117873006
+src_node: 11
+src_node: 3
+receive_txn at 780.5155697490452
+src_node: 5
+src_node: 10
+receive_txn at 543.2048799041369
+src_node: 12
+src_node: 9
+receive_txn at 845.663884520787
+src_node: 4
+src_node: 8
+receive_txn at 597.1497639738918
+src_node: 7
+src_node: 16
+receive_txn at 504.6561875457423
+src_node: 4
+src_node: 5
+receive_txn at 651.4656203476065
+src_node: 8
+src_node: 3
+receive_txn at 707.4565821198614
+src_node: 14
+src_node: 10
+receive_txn at 691.4300955402613
+src_node: 2
+src_node: 14
+receive_txn at 689.3843215541553
+src_node: 14
+src_node: 2
+receive_txn at 568.294983841698
+src_node: 6
+src_node: 11
+receive_txn at 706.3994224407104
+src_node: 5
+src_node: 13
+receive_txn at 536.4142804682886
+src_node: 4
+src_node: 5
+receive_txn at 768.5312724430303
+src_node: 15
+src_node: 5
+receive_txn at 531.2403068471294
+src_node: 3
+src_node: 13
+receive_txn at 496.9873211042112
+src_node: 8
+src_node: 4
+receive_txn at 541.0502079191535
+src_node: 4
+src_node: 3
+receive_txn at 904.8370446282124
+src_node: 12
+src_node: 6
+receive_txn at 573.5176514795089
+src_node: 1
+src_node: 5
+receive_txn at 719.9877153941691
+src_node: 16
+src_node: 6
+receive_txn at 494.1000452925626
+src_node: 4
+src_node: 8
+receive_txn at 564.466277261859
+src_node: 16
+src_node: 15
+receive_txn at 718.7810366684685
+src_node: 8
+src_node: 15
+receive_txn at 749.737538604109
+src_node: 16
+src_node: 6
+receive_txn at 772.8177176838327
+src_node: 2
+src_node: 14
+receive_txn at 787.3138134739554
+src_node: 5
+src_node: 2
+receive_txn at 634.6182188934386
+src_node: 5
+src_node: 8
+receive_txn at 640.8528349244073
+src_node: 14
+src_node: 5
+receive_txn at 613.9713546495713
+src_node: 16
+src_node: 15
+receive_txn at 583.0334019039615
+src_node: 2
+src_node: 14
+receive_txn at 753.6487347838672
+src_node: 16
+src_node: 2
+receive_txn at 747.2523353500956
+src_node: 10
+src_node: 2
+receive_txn at 730.0554527821321
+src_node: 10
+src_node: 1
+receive_txn at 818.9081352355481
+src_node: 5
+src_node: 7
+receive_txn at 840.5625912369578
+src_node: 1
+src_node: 5
+receive_txn at 763.4782251259437
+src_node: 12
+src_node: 8
+receive_txn at 659.2006796784328
+src_node: 16
+src_node: 6
+receive_txn at 539.4397629444115
+src_node: 16
+src_node: 1
+receive_txn at 540.3333886191175
+src_node: 1
+src_node: 4
+receive_txn at 783.4600750670418
+src_node: 9
+src_node: 8
+receive_txn at 575.5591936756913
+src_node: 5
+src_node: 15
+receive_txn at 714.4906962133828
+src_node: 7
+src_node: 2
+receive_txn at 784.6686698558633
+src_node: 5
+src_node: 14
+receive_txn at 743.2454044652012
+src_node: 10
+src_node: 1
+receive_txn at 752.0914813296041
+src_node: 6
+src_node: 1
+receive_txn at 622.1797198178708
+src_node: 7
+src_node: 15
+receive_txn at 748.4598994087978
+src_node: 13
+src_node: 12
+receive_txn at 542.3446494750134
+src_node: 3
+src_node: 16
+retry_mining at 9015
+src_node: 16
