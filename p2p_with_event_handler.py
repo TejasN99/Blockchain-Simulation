@@ -144,44 +144,66 @@ def generate_valid_txn_list(node):
     no_of_attempts = 0
     max_no_of_attempts = 40
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
-        # Max no of txns allowed in a block is 1023
-        # num_txns = randint(10,min(1023, len(node.unspent_txn_pool)))
-        num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))
-        print("Total ", len(node.unspent_txn_pool),"txns")
-        print("Picked ",num_txns," txns")
-        txn_list = random_sample.sample(node.unspent_txn_pool, num_txns)
+        num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))        
+        txn_list = [node.unspent_txn_pool[i] for i in sorted(random.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
         txns_valid_flag = 1
-        invalid_txns = []
-        print(balance_sheet)
         for txn in txn_list:
-            if balance_sheet[txn.payer.id] < txn.amount:
-                invalid_txns.append(txn)
-            else:
-                balance_sheet[txn.payer.id] -= txn.amount
-                balance_sheet[txn.recipient.id] += txn.amount
-        
-        for txn in invalid_txns:
-            print("Payer:", txn.payer.id)
-            print("Recipient:", txn.recipient.id)
-            print("Amount:", txn.amount)
-
-        for txn in invalid_txns:
             if balance_sheet[txn.payer.id] < txn.amount:
                 txns_valid_flag = 0
                 break
             else:
                 balance_sheet[txn.payer.id] -= txn.amount
-                balance_sheet[txn.recipient.id] -= txn.amount
+                balance_sheet[txn.recipient.id] += txn.amount
+
         no_of_attempts += 1
-    
-    if no_of_attempts == max_no_of_attempts:
+
+    if txns_valid_flag == 0 and no_of_attempts == max_no_of_attempts:
         return None, None
     else:
         coinbase_txn = Single_Transaction(None, node, 50)
         txn_list.append(coinbase_txn)
         balance_sheet[node.id] += 50    # Coinbase txn
         return txn_list, balance_sheet
+
+    #     # Max no of txns allowed in a block is 1023
+    #     # num_txns = randint(10,min(1023, len(node.unspent_txn_pool)))
+    #     num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))
+    #     print("Total ", len(node.unspent_txn_pool),"txns")
+    #     print("Picked ",num_txns," txns")
+    #     txn_list = random_sample.sample(node.unspent_txn_pool, num_txns)
+    #     balance_sheet = node.mining_on.balance_sheet.copy()
+    #     txns_valid_flag = 1
+    #     invalid_txns = []
+    #     print(balance_sheet)
+    #     for txn in txn_list:
+    #         if balance_sheet[txn.payer.id] < txn.amount:
+    #             invalid_txns.append(txn)
+    #         else:
+    #             balance_sheet[txn.payer.id] -= txn.amount
+    #             balance_sheet[txn.recipient.id] += txn.amount
+        
+    #     for txn in invalid_txns:
+    #         print("Payer:", txn.payer.id)
+    #         print("Recipient:", txn.recipient.id)
+    #         print("Amount:", txn.amount)
+
+    #     for txn in invalid_txns:
+    #         if balance_sheet[txn.payer.id] < txn.amount:
+    #             txns_valid_flag = 0
+    #             break
+    #         else:
+    #             balance_sheet[txn.payer.id] -= txn.amount
+    #             balance_sheet[txn.recipient.id] -= txn.amount
+    #     no_of_attempts += 1
+    
+    # if no_of_attempts == max_no_of_attempts:
+    #     return None, None
+    # else:
+    #     coinbase_txn = Single_Transaction(None, node, 50)
+    #     txn_list.append(coinbase_txn)
+    #     balance_sheet[node.id] += 50    # Coinbase txn
+    #     return txn_list, balance_sheet
 
 def network_topology():
     total_nodes=randint(10,20)
@@ -352,6 +374,25 @@ def latency(sender_node,receiver_node,message_bits):
 #             print("Sender=",i+1,"Receiver=",peer_node,"Latency",overall_delay)
 
 
+def restart_mining(node, event_list, new_block):
+    for event in event_list:
+        if event[1].src_node == node and event[1].event_type == "generate_block":
+            event_list.remove(event)
+            hq.heapify(event_list)
+            break
+    node.mining_on = new_block
+    txn_list, new_balance_sheet = generate_valid_txn_list(node)
+    if txn_list == None:
+        retry_mining_event = Event(cur_time + 5*ttx, "retry_mining", None, node)
+        hq.heappush(event_list, (cur_time + 5*ttx, retry_mining_event))
+    else:
+        mining_time = random.exponential(scale = node.avg_mining_time)
+        execution_time = cur_time + mining_time
+        new_block = Block(node, node.mining_on, txn_list, new_balance_sheet)
+        mining_event = Event(execution_time, "generate_block", new_block, node)
+        hq.heappush(event_list,(execution_time, mining_event))
+
+
 def event_handler(event_list, event, ttx):
     if event.event_type=="generate_txn":
         global txn_count        
@@ -400,6 +441,11 @@ def event_handler(event_list, event, ttx):
         src_node.leaf_blocks.remove(src_node.mining_on)
         src_node.leaf_blocks.append(new_block)
         src_node.mining_on = new_block
+
+        # Removing the txns in new block from the node's unspent_txn_pool
+        for txn in new_block.txn_list:
+            src_node.unspend_txn_pool.remove(txn)
+
         for peer_node in node_graph[src_node]:
             prev_execution_time=event.execution_time
             print("Previous exec time of event is",prev_execution_time)
@@ -496,7 +542,11 @@ def event_handler(event_list, event, ttx):
                     hq.heappush(event_list,(execution_time,receive_event))
                 else:
                     print("Not sending receive block from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
-            if new_block.chain_length > src_node.mining_on.chain_length:
+
+            if new_block.parent == src_node.mining_on:
+                restart_mining(src_node, event_list, new_block)
+
+            elif new_block.chain_length > src_node.mining_on.chain_length:
                 current_mining_chain = []
                 block = src_node.mining_on
                 while(block.id != 0):
@@ -517,30 +567,17 @@ def event_handler(event_list, event, ttx):
                         del new_block_chain[-1]
                     
                 for block in current_mining_chain:
-                    src_node.unspent_txn_pool.extend(block.txn_list)
+                    for txn in block.txn_list:
+                        if txn in src_node.seen_txns:
+                            src_node.unspent_txn_pool.append(txn)
                 for block in new_block_chain:
                     for txn in block.txn_list:
                         if txn in src_node.unspent_txn_pool:
                             src_node.unspent_txn_pool.remove(txn)
                 
                 # Killing the current mining of the node since longer chain was found
-                for event in event_list:
-                    if event[1].src_node == src_node and event[1].event_type == "generate_block":
-                        event_list.remove(event)
-                        hq.heapify(event_list)
-                        break
-
-                src_node.mining_on = new_block   
-                txn_list, new_balance_sheet = generate_valid_txn_list(src_node)
-                if txn_list == None:
-                    retry_mining_event = Event(cur_time + 5*ttx, "retry_mining", None, src_node)
-                    hq.heappush(event_list, (cur_time + 5*ttx, retry_mining_event))
-                else:
-                    mining_time = random.exponential(scale = src_node.avg_mining_time)
-                    execution_time = cur_time + mining_time
-                    new_block = Block(src_node, src_node.mining_on, txn_list, new_balance_sheet)
-                    mining_event = Event(execution_time, "generate_block", new_block, src_node)
-                    hq.heappush(event_list,(execution_time, mining_event))
+                restart_mining(src_node, event_list, new_block)
+             
     
     elif event.event_type == "retry_mining":
         src_node = event.src_node
