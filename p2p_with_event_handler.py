@@ -134,17 +134,24 @@ class Event:
         self.tgt_node = tgt_node
         event_count += 1
 
+#Returns 
+# 1) A list of valid  txns 
+# 2) Balance sheet of the new block that will be generated
 def generate_valid_txn_list(node):
-    # print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
-    if len(node.unspent_txn_pool) < 1:
+    print("generate_valid_txn_list for node ",node.id)
+    print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
+    if len(node.unspent_txn_pool) < 1:  ## UNDO
+        print("Stuck at 144")
+        print(event_count)
         # print("Length of txn_pool too small, returning None")
         return None, None
 
     txns_valid_flag = 0
     no_of_attempts = 0
-    max_no_of_attempts = 40
+    max_no_of_attempts = 50 #UNDO
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
-        num_txns = randint(1, min(3, len(node.unspent_txn_pool)))     ## UNDO
+        num_txns=min(10, len(node.unspent_txn_pool))
+        #num_txns = randint(1, min(3, len(node.unspent_txn_pool)))     ## UNDO
         # num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))
         txn_list = [node.unspent_txn_pool[i] for i in sorted(random_sample.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
@@ -175,6 +182,7 @@ def generate_valid_txn_list(node):
         
 
         coinbase_txn = Single_Transaction(None, node, 50)
+        print("Coinbase generated with ID", coinbase_txn.id)
         txn_list.append(coinbase_txn)
         balance_sheet[node.id] += 50    # Coinbase txn
         return txn_list, balance_sheet
@@ -388,7 +396,7 @@ def latency(sender_node,receiver_node,message_bits):
 #             print("Sender=",i+1,"Receiver=",peer_node,"Latency",overall_delay)
 
 
-def restart_mining(node, event_list, new_block):
+def restart_mining(node, event_list, new_block, cur_execution_time):
     for event in event_list:
         if event[1].src_node == node and event[1].event_type == "generate_block":
             event_list.remove(event)
@@ -397,11 +405,11 @@ def restart_mining(node, event_list, new_block):
     node.mining_on = new_block
     txn_list, new_balance_sheet = generate_valid_txn_list(node)
     if txn_list == None:
-        retry_mining_event = Event(cur_time + 5*ttx, "retry_mining", None, node)
-        hq.heappush(event_list, (cur_time + 5*ttx, retry_mining_event))
+        retry_mining_event = Event(cur_execution_time + 5*ttx, "retry_mining", None, node)
+        hq.heappush(event_list, (cur_execution_time + 5*ttx, retry_mining_event))
     else:
         mining_time = random.exponential(scale = node.avg_mining_time)
-        execution_time = cur_time + mining_time
+        execution_time = cur_execution_time + mining_time
         new_block = Block(node, node.mining_on, txn_list, new_balance_sheet)
         mining_event = Event(execution_time, "generate_block", new_block, node)
         hq.heappush(event_list,(execution_time, mining_event))
@@ -415,6 +423,8 @@ def event_handler(event_list, event, ttx):
         src_node=event.src_node
         src_node.seen_txn_id.append(event.event_packet.id)
         src_node.unspent_txn_pool.append(event.event_packet)
+        print("Generate Txn: Appended to UTXO of source node ",src_node.id)
+        print("Length of UTXO is",len(src_node.unspent_txn_pool))
         for peer_node in node_graph[src_node]:
             #message size of single trasaction is 1024*8 bits
             prev_execution_time=event.execution_time
@@ -428,7 +438,7 @@ def event_handler(event_list, event, ttx):
             receive_event=Event(execution_time,"receive_txn",event_packet,src_node,peer_node)
             hq.heappush(event_list,(execution_time,receive_event))
         
-        if txn_count > 5:
+        if txn_count > 500:
             print("Shashank")
             return
 
@@ -445,10 +455,10 @@ def event_handler(event_list, event, ttx):
         hq.heappush(event_list,(event.execution_time + new_txn_duration,new_txn_event))
 
     elif event.event_type=="generate_block":        
-        print("Detected Generate_block")
-        print("Execution_time is",event.execution_time)
+        #print("Execution_time is",event.execution_time)
         src_node = event.src_node
         new_block = event.event_packet
+        print("Detected Generate_block",new_block.id, "from node",event.src_node.id)
         # print("Mining on:", src_node.mining_on.id)
         # print("Leaf Nodes:")
         # for node in src_node.leaf_blocks:
@@ -456,12 +466,14 @@ def event_handler(event_list, event, ttx):
         src_node.leaf_blocks.remove(src_node.mining_on)
         src_node.leaf_blocks.append(new_block)
         src_node.mining_on = new_block
+        print("UTXO Length b4 block generation",len(src_node.unspent_txn_pool))
 
         # Removing the txns in new block from the node's unspent_txn_pool
         for txn in new_block.txn_list:
             try:
-                if txn.payer != None:
+                if txn in src_node.unspent_txn_pool:
                     src_node.unspent_txn_pool.remove(txn)
+                    print("Removed from UTXO Txn id",txn.id)
             except Exception as err:
                 print("Encountered error:", err)
                 print("Node:" + str(src_node.id))
@@ -482,6 +494,7 @@ def event_handler(event_list, event, ttx):
                 exit()
 
 
+        print("UTXO Length after block generation",len(src_node.unspent_txn_pool))
         for peer_node in node_graph[src_node]:
             prev_execution_time=event.execution_time
             print("Previous exec time of event is",prev_execution_time)
@@ -509,7 +522,7 @@ def event_handler(event_list, event, ttx):
         #the target node of previous event is the source node for the next receive event triggered
         src_node=event.tgt_node
         prev_src_node=event.src_node
-        print("Detected Receive_txn!!")
+        print("Detected Receive_txn from node",prev_src_node.id,"to node ",src_node.id)
         # print("Execution_time is",event.execution_time)
         if (event.event_packet.id not in src_node.seen_txn_id):
             # print("Sendin Txn id",event.event_packet.id,"from node",src_node.id,"to its peers")
@@ -518,6 +531,10 @@ def event_handler(event_list, event, ttx):
             if event.event_packet not in src_node.unspent_txn_pool:
                 print("Inside receive_txn, appending txn to unspent_txn_pool")
                 src_node.unspent_txn_pool.append(event.event_packet)
+                print("Receive Txn: Appended to UTXO of source node ",src_node.id)
+                print("Length of UTXO is",len(src_node.unspent_txn_pool))
+            else:
+                print("Receive Txn: Txn already in UTXO")
             for peer_node in node_graph[src_node]:
                 if (peer_node.id != prev_src_node.id):
                     # print("Generating receive txn from node ",src_node.id,"to peer node ",peer_node.id)
@@ -542,77 +559,86 @@ def event_handler(event_list, event, ttx):
 
 
 
-    # elif event.event_type=="receive_block":
-    #     # Checking if the block received is already in blockchain of the node
-    #     prev_src_node = event.src_node
-    #     src_node = event.tgt_node
-    #     new_block = event.event_packet
-    #     cur_time = event.execution_time
-    #     print("Previous exec time of event is",cur_time)
-    #     already_seen_flag = 0
-    #     for leaf_block in src_node.leaf_blocks:
-    #         block = leaf_block
-    #         while block.id != 0:
-    #             if block == new_block:
-    #                 already_seen_flag = 1
-    #                 break
-    #             block = block.parent
-    #         if already_seen_flag == 1:
-    #             break
+    elif event.event_type=="receive_block":
+        # Checking if the block received is already in blockchain of the node
+        prev_src_node = event.src_node
+        src_node = event.tgt_node
+        new_block = event.event_packet
+        cur_time = event.execution_time
+
+        print("Detected Receive block",new_block.id, "from node",prev_src_node.id,"to node ",src_node.id)
+        #print("Previous exec time of event is",cur_time)
+        already_seen_flag = 0
+        for leaf_block in src_node.leaf_blocks:
+            block = leaf_block
+            while block.id != 0:
+                if block == new_block:
+                    already_seen_flag = 1
+                    break
+                block = block.parent
+            if already_seen_flag == 1:
+                break
         
-    #     # If block is already in blockchain, we do not forward it again
-    #     if already_seen_flag == 0:
-    #         if new_block.parent in src_node.leaf_blocks:
-    #             src_node.leaf_blocks.remove(new_block.parent)
-    #         src_node.leaf_blocks.append(new_block)
-    #         for peer_node in node_graph[src_node]:
-    #             if (peer_node.id != prev_src_node.id):
-    #                 print("Generating receive block from node ",src_node.id,"to peer node ",peer_node.id)
-    #                 #message size of single trasaction is 1024*8 bits                    
-    #                 latency_delay=latency(src_node,peer_node,new_block.block_size)
-    #                 execution_time = cur_time + latency_delay
-    #                 print("New exec time of event is",execution_time)
-    #                 print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
-    #                 print("Event Count",event_count)
-    #                 receive_event = Event(execution_time,"receive_block", new_block, src_node, peer_node)
-    #                 hq.heappush(event_list,(execution_time,receive_event))
-    #             else:
-    #                 print("Not sending receive block from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
+        # If block is already in blockchain, we do not forward it again
+        if already_seen_flag == 0:
+            if new_block.parent in src_node.leaf_blocks:
+                src_node.leaf_blocks.remove(new_block.parent)
+            src_node.leaf_blocks.append(new_block)
+            for peer_node in node_graph[src_node]:
+                if (peer_node.id != prev_src_node.id):
+                    print("Generating receive block from node ",src_node.id,"to peer node ",peer_node.id)
+                    #message size of single trasaction is 1024*8 bits                    
+                    latency_delay=latency(src_node,peer_node,new_block.block_size)
+                    execution_time = cur_time + latency_delay
+                    print("New exec time of event is",execution_time)
+                    print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
+                    print("Event Count",event_count)
+                    receive_event = Event(execution_time,"receive_block", new_block, src_node, peer_node)
+                    hq.heappush(event_list,(execution_time,receive_event))
+                else:
+                    print("Not sending receive block from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
 
-    #         if new_block.parent == src_node.mining_on:
-    #             restart_mining(src_node, event_list, new_block)
+            if new_block.parent == src_node.mining_on:
+                restart_mining(src_node, event_list, new_block, event.execution_time)
 
-    #         # elif new_block.chain_length > src_node.mining_on.chain_length:
-    #         #     current_mining_chain = []
-    #         #     block = src_node.mining_on
-    #         #     while(block.id != 0):
-    #         #         current_mining_chain.append(block)
-    #         #         block = block.parent
+            elif new_block.chain_length > src_node.mining_on.chain_length:
+                current_mining_chain = []
+                block = src_node.mining_on
+                while(block.id != 0):
+                    current_mining_chain.append(block)
+                    block = block.parent
 
-    #         #     new_block_chain = []
-    #         #     block = new_block
-    #         #     while(block.id != 0):
-    #         #         new_block_chain.append(block)
-    #         #         block = block.parent
+                new_block_chain = []
+                block = new_block
+                while(block.id != 0):
+                    new_block_chain.append(block)
+                    block = block.parent
 
-    #         #     print("current_mining_chain:", current_mining_chain)
-    #         #     print("new_block_chain:", new_block_chain)
-    #         #     if current_mining_chain != []:
-    #         #         while(current_mining_chain[-1] == new_block_chain[-1]):
-    #         #             del current_mining_chain[-1]
-    #         #             del new_block_chain[-1]
+                print("current_mining_chain:", current_mining_chain)
+                print("new_block_chain:", new_block_chain)
+                if current_mining_chain != []:
+                    print("len of current_mining_chain:", len(current_mining_chain))
+                    print("len of new_block_chain:", len(new_block_chain))
+                    while(current_mining_chain[-1] == new_block_chain[-1]):
+                        del current_mining_chain[-1]
+                        del new_block_chain[-1]
+                        
+                        # If new block came earlier than parent and both nodes are in the same chain
+                        if current_mining_chain == []:
+                            break
+
                     
-    #         #     for block in current_mining_chain:
-    #         #         for txn in block.txn_list:
-    #         #             if txn in src_node.seen_txns:
-    #         #                 src_node.unspent_txn_pool.append(txn)
-    #         #     for block in new_block_chain:
-    #         #         for txn in block.txn_list:
-    #         #             if txn in src_node.unspent_txn_pool:
-    #         #                 src_node.unspent_txn_pool.remove(txn)
+                for block in current_mining_chain:
+                    for txn in block.txn_list:
+                        if txn in src_node.seen_txn_id:
+                            src_node.unspent_txn_pool.append(txn)
+                for block in new_block_chain:
+                    for txn in block.txn_list:
+                        if txn in src_node.unspent_txn_pool:
+                            src_node.unspent_txn_pool.remove(txn)
                 
-    #         #     # Killing the current mining of the node since longer chain was found
-    #         #     restart_mining(src_node, event_list, new_block)
+                # Killing the current mining of the node since longer chain was found
+                restart_mining(src_node, event_list, new_block, event.execution_time)
              
     
     elif event.event_type == "retry_mining":
@@ -655,7 +681,7 @@ z1 = int(sys.argv[2])
 ttx = int(sys.argv[3])
 
 # Inter-arrival time between blocks is set to 10 mins
-I = 6000
+I = 60
 txn_count = 1
 block_count = 0
 event_count = 1
@@ -663,6 +689,15 @@ event_count = 1
 
 node_graph = None
 node_graph,node_speed,node_hash,total_nodes,init_node_bal = network_topology()
+
+
+f = open("log.txt", "w")
+f1 = open("txn_pools.txt", "w")
+
+
+for node in node_graph:
+    f.write(str(node) + ": " +  str(node_graph[node]) + "\n")
+
 genesis_block = Block(None, None, [], init_node_bal)
 no_of_lowCPU_nodes = total_nodes * z1 // 100
 no_of_highCPU_nodes = total_nodes - no_of_lowCPU_nodes
@@ -688,9 +723,6 @@ for id in range(1, total_nodes+1):
     del node_graph[id]
 
 
-
-f = open("log.txt", "w")
-f1 = open("txn_pools.txt", "w")
 # # printing node graph
 # for node in node_graph:
 #     print(node.id, node.speed, node.hash_power)
@@ -718,7 +750,15 @@ if __name__ == "__main__":
 
         # if len(event_list) > 100:
         #     break
-        event  = hq.heappop(event_list)[1]
+        try:        ## UNDO
+            event  = hq.heappop(event_list)[1]
+        except Exception as e:
+            print("Exception:",e)
+            conflict_event1 = event_list[0]
+            for c_event in event_list[1:]:
+                if conflict_event1[0] == event[0]:
+                    print(conflict_event1[1].event_type)
+                    print(c_event[1].event_type)
         f.write("Type of Event:" + event.event_type + "\n")
         f.write("Source Node:" + str(event.src_node.id) + "\n")
         if event.tgt_node != None:

@@ -1,0 +1,1542 @@
+Node:1
+Transactions in unspent_txn_pool:
+1 2 3 4 7 5 8 
+Transactions in block's txn_pool:
+1 2 3 4 7 5 8 
+
+Node:2
+Transactions in unspent_txn_pool:
+2 1 3 5 4 7 8 
+Transactions in block's txn_pool:
+2 1 3 5 4 7 8 
+
+Node:3
+Transactions in unspent_txn_pool:
+3 1 2 4 7 5 8 
+Transactions in block's txn_pool:
+3 1 2 4 7 5 8 
+
+Node:1
+Transactions in unspent_txn_pool:
+1 2 3 4 7 5 8 
+Transactions in block's txn_pool:
+1 2 3 4 7 5 8 
+
+Node:3
+Transactions in unspent_txn_pool:
+6 9 10 15 17 16 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+6 9 15 17 16 18 19 22 20 23 
+
+Node:1
+Transactions in unspent_txn_pool:
+9 10 6 15 16 17 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+9 10 15 16 17 18 19 20 23 26 
+
+Node:1
+Transactions in unspent_txn_pool:
+6 21 22 
+Transactions in block's txn_pool:
+6 21 22 
+
+Node:2
+Transactions in unspent_txn_pool:
+9 10 6 15 16 17 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+9 6 15 16 17 18 19 21 22 23 
+
+Node:3
+Transactions in unspent_txn_pool:
+6 9 10 15 17 16 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+6 9 15 17 16 18 19 21 20 26 
+
+Node:2
+Transactions in unspent_txn_pool:
+9 10 6 15 16 17 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+10 6 15 16 18 19 21 22 23 26 
+
+Node:3
+Transactions in unspent_txn_pool:
+6 9 10 15 17 16 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+9 10 17 16 18 19 21 22 20 26 
+
+Node:2
+Transactions in unspent_txn_pool:
+9 17 20 
+Transactions in block's txn_pool:
+9 17 20 
+
+Node:3
+Transactions in unspent_txn_pool:
+6 9 10 15 17 16 18 19 21 22 20 23 26 
+Transactions in block's txn_pool:
+6 9 15 17 16 18 19 21 20 26 
+
+Node:3
+Transactions in unspent_txn_pool:
+10 22 23 
+Transactions in block's txn_pool:
+10 22 23 
+
+Node:3
+Transactions in unspent_txn_pool:
+23 
+Transactions in block's txn_pool:
+23 
+
+Node:1
+Transactions in unspent_txn_pool:
+25 
+Transactions in block's txn_pool:
+25 
+
+Node:2
+Transactions in unspent_txn_pool:
+25 
+Transactions in block's txn_pool:
+25 
+
+Node:1
+Transactions in unspent_txn_pool:
+39 
+Transactions in block's txn_pool:
+39 
+
+Node:2
+Transactions in unspent_txn_pool:
+39 
+Transactions in block's txn_pool:
+39 
+
+Node:3
+Transactions in unspent_txn_pool:
+25 39 
+Transactions in block's txn_pool:
+25 39 
+
+Node:1
+Transactions in unspent_txn_pool:
+27 42 47 24 46 50 51 52 49 48 53 55 56 57 58 54 59 62 60 
+Transactions in block's txn_pool:
+27 47 24 46 48 53 55 59 62 60 
+
+Node:1
+Transactions in unspent_txn_pool:
+42 50 51 52 49 56 57 58 54 
+Transactions in block's txn_pool:
+42 50 51 52 49 56 57 58 54 
+
+Node:2
+Transactions in unspent_txn_pool:
+42 50 51 52 49 57 58 56 54 
+Transactions in block's txn_pool:
+42 50 51 52 49 57 58 56 54 
+
+Node:3
+Transactions in unspent_txn_pool:
+42 50 51 52 49 57 56 58 54 
+Transactions in block's txn_pool:
+42 50 51 52 49 57 56 58 54 
+
+Node:1
+Transactions in unspent_txn_pool:
+64 
+Transactions in block's txn_pool:
+64 
+
+Node:2
+Transactions in unspent_txn_pool:
+64 
+Transactions in block's txn_pool:
+64 
+
+Node:3
+Transactions in unspent_txn_pool:
+64 
+Transactions in block's txn_pool:
+64 
+
+Node:1
+Transactions in unspent_txn_pool:
+63 69 61 73 74 77 78 75 79 81 82 83 84 80 85 86 76 88 
+Transactions in block's txn_pool:
+63 69 73 74 77 75 81 82 83 80 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 69 61 73 77 74 75 79 78 81 82 83 80 84 85 86 76 88 
+Transactions in block's txn_pool:
+69 61 77 74 75 78 81 83 76 88 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 69 61 73 77 74 75 79 78 81 82 83 80 84 85 86 76 88 
+Transactions in block's txn_pool:
+69 73 74 78 82 83 80 84 86 76 
+
+Node:2
+Transactions in unspent_txn_pool:
+69 63 61 73 77 74 75 79 78 81 82 83 84 80 85 86 76 88 
+Transactions in block's txn_pool:
+69 63 61 77 74 82 83 84 86 76 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 69 61 73 77 74 75 79 78 81 82 83 80 84 85 86 76 88 
+Transactions in block's txn_pool:
+69 61 73 77 75 79 78 82 85 76 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 61 77 75 79 81 85 88 
+Transactions in block's txn_pool:
+63 61 77 75 79 81 85 88 
+
+Node:1
+Transactions in unspent_txn_pool:
+63 69 61 73 74 77 78 75 79 81 82 83 84 80 85 86 76 88 
+Transactions in block's txn_pool:
+63 69 73 74 78 81 83 84 85 86 
+
+Node:2
+Transactions in unspent_txn_pool:
+69 63 61 73 77 74 75 79 78 81 82 83 84 80 85 86 76 88 
+Transactions in block's txn_pool:
+61 77 74 78 81 82 84 85 86 76 
+
+Node:1
+Transactions in unspent_txn_pool:
+61 77 75 79 82 80 76 88 
+Transactions in block's txn_pool:
+61 77 75 79 82 80 76 88 
+
+Node:1
+Transactions in unspent_txn_pool:
+61 79 76 88 
+Transactions in block's txn_pool:
+61 79 76 88 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 79 85 
+Transactions in block's txn_pool:
+63 79 85 
+
+Node:3
+Transactions in unspent_txn_pool:
+63 
+Transactions in block's txn_pool:
+63 
+
+Node:1
+Transactions in unspent_txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+Transactions in block's txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+
+Node:2
+Transactions in unspent_txn_pool:
+87 90 104 105 103 89 106 108 109 111 
+Transactions in block's txn_pool:
+87 90 104 105 103 89 106 108 109 111 
+
+Node:3
+Transactions in unspent_txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+Transactions in block's txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+
+Node:3
+Transactions in unspent_txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+Transactions in block's txn_pool:
+87 90 104 105 103 89 106 109 108 111 
+
+Node:3
+Transactions in unspent_txn_pool:
+107 110 117 119 120 112 122 118 121 123 125 124 126 127 128 
+Transactions in block's txn_pool:
+107 110 117 119 120 112 122 118 124 126 
+
+Node:2
+Transactions in unspent_txn_pool:
+107 110 117 119 120 112 122 118 121 123 125 124 126 127 128 
+Transactions in block's txn_pool:
+107 110 117 120 122 118 121 123 125 127 
+
+Node:2
+Transactions in unspent_txn_pool:
+119 112 124 126 128 
+Transactions in block's txn_pool:
+119 112 124 126 128 
+
+Node:1
+Transactions in unspent_txn_pool:
+110 107 117 119 120 112 118 122 121 123 125 124 126 128 127 
+Transactions in block's txn_pool:
+107 117 119 120 112 118 123 124 126 128 
+
+Node:3
+Transactions in unspent_txn_pool:
+107 110 117 119 120 112 122 118 121 123 125 124 126 127 128 
+Transactions in block's txn_pool:
+107 119 120 112 122 118 121 125 126 127 
+
+Node:1
+Transactions in unspent_txn_pool:
+110 122 121 125 127 
+Transactions in block's txn_pool:
+110 122 121 125 127 
+
+Node:3
+Transactions in unspent_txn_pool:
+110 117 123 124 128 
+Transactions in block's txn_pool:
+110 117 123 124 128 
+
+Node:3
+Transactions in unspent_txn_pool:
+123 128 
+Transactions in block's txn_pool:
+123 128 
+
+Node:2
+Transactions in unspent_txn_pool:
+140 
+Transactions in block's txn_pool:
+140 
+
+Node:1
+Transactions in unspent_txn_pool:
+130 140 
+Transactions in block's txn_pool:
+130 140 
+
+Node:2
+Transactions in unspent_txn_pool:
+130 
+Transactions in block's txn_pool:
+130 
+
+Node:1
+Transactions in unspent_txn_pool:
+130 
+Transactions in block's txn_pool:
+130 
+
+Node:3
+Transactions in unspent_txn_pool:
+130 
+Transactions in block's txn_pool:
+130 
+
+Node:2
+Transactions in unspent_txn_pool:
+141 129 147 131 148 149 152 150 153 155 156 151 154 159 160 
+Transactions in block's txn_pool:
+141 147 131 149 152 153 155 156 154 160 
+
+Node:1
+Transactions in unspent_txn_pool:
+141 129 147 131 148 149 152 153 150 155 156 154 151 159 
+Transactions in block's txn_pool:
+141 129 147 131 152 153 150 155 151 159 
+
+Node:1
+Transactions in unspent_txn_pool:
+148 149 156 154 
+Transactions in block's txn_pool:
+148 149 156 154 
+
+Node:1
+Transactions in unspent_txn_pool:
+148 149 156 154 
+Transactions in block's txn_pool:
+148 149 156 154 
+
+Node:2
+Transactions in unspent_txn_pool:
+141 129 147 131 148 149 152 150 153 155 156 151 154 159 160 
+Transactions in block's txn_pool:
+129 147 149 152 150 153 155 154 159 160 
+
+Node:2
+Transactions in unspent_txn_pool:
+141 129 147 131 148 149 152 150 153 155 156 151 154 159 160 
+Transactions in block's txn_pool:
+129 131 148 149 150 153 155 156 151 159 
+
+Node:2
+Transactions in unspent_txn_pool:
+148 149 156 154 160 
+Transactions in block's txn_pool:
+148 149 156 154 160 
+
+Node:2
+Transactions in unspent_txn_pool:
+148 149 156 154 160 
+Transactions in block's txn_pool:
+148 149 156 154 160 
+
+Node:3
+Transactions in unspent_txn_pool:
+160 
+Transactions in block's txn_pool:
+160 
+
+Node:1
+Transactions in unspent_txn_pool:
+158 171 157 161 174 175 176 173 177 
+Transactions in block's txn_pool:
+158 171 157 161 174 175 176 173 177 
+
+Node:3
+Transactions in unspent_txn_pool:
+171 158 157 161 174 175 173 176 177 
+Transactions in block's txn_pool:
+171 158 157 161 174 175 173 176 177 
+
+Node:3
+Transactions in unspent_txn_pool:
+171 158 157 161 174 175 173 176 177 
+Transactions in block's txn_pool:
+171 158 157 161 174 175 173 176 177 
+
+Node:2
+Transactions in unspent_txn_pool:
+158 171 157 161 174 175 176 173 177 
+Transactions in block's txn_pool:
+158 171 157 161 174 175 176 173 177 
+
+Node:3
+Transactions in unspent_txn_pool:
+179 
+Transactions in block's txn_pool:
+179 
+
+Node:2
+Transactions in unspent_txn_pool:
+179 
+Transactions in block's txn_pool:
+179 
+
+Node:1
+Transactions in unspent_txn_pool:
+179 
+Transactions in block's txn_pool:
+179 
+
+Node:3
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 193 189 194 195 196 198 199 
+Transactions in block's txn_pool:
+188 172 191 190 193 189 194 195 196 199 
+
+Node:3
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 193 189 194 195 196 198 199 
+Transactions in block's txn_pool:
+178 188 172 191 190 194 195 196 198 199 
+
+Node:1
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 189 193 194 195 196 198 199 
+Transactions in block's txn_pool:
+178 172 191 190 189 193 194 196 198 199 
+
+Node:1
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 189 193 194 195 196 198 199 
+Transactions in block's txn_pool:
+178 172 191 190 189 193 194 195 196 198 
+
+Node:3
+Transactions in unspent_txn_pool:
+184 193 189 
+Transactions in block's txn_pool:
+184 193 189 
+
+Node:1
+Transactions in unspent_txn_pool:
+184 188 199 
+Transactions in block's txn_pool:
+184 188 199 
+
+Node:1
+Transactions in unspent_txn_pool:
+184 188 
+Transactions in block's txn_pool:
+184 188 
+
+Node:3
+Transactions in unspent_txn_pool:
+184 193 189 
+Transactions in block's txn_pool:
+184 193 189 
+
+Node:2
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 189 193 194 195 196 198 199 
+Transactions in block's txn_pool:
+178 184 188 172 190 193 194 195 196 199 
+
+Node:2
+Transactions in unspent_txn_pool:
+178 184 188 172 191 190 189 193 194 195 196 198 199 
+Transactions in block's txn_pool:
+178 172 190 189 193 194 195 196 198 199 
+
+Node:2
+Transactions in unspent_txn_pool:
+184 188 191 
+Transactions in block's txn_pool:
+184 188 191 
+
+Node:2
+Transactions in unspent_txn_pool:
+184 188 191 
+Transactions in block's txn_pool:
+184 188 191 
+
+Node:2
+Transactions in unspent_txn_pool:
+184 188 191 
+Transactions in block's txn_pool:
+184 188 191 
+
+Node:2
+Transactions in unspent_txn_pool:
+184 188 191 
+Transactions in block's txn_pool:
+184 188 191 
+
+Node:2
+Transactions in unspent_txn_pool:
+184 188 191 
+Transactions in block's txn_pool:
+184 188 191 
+
+Node:1
+Transactions in unspent_txn_pool:
+192 200 217 197 218 216 219 220 222 224 223 
+Transactions in block's txn_pool:
+192 200 217 197 218 216 219 222 224 223 
+
+Node:3
+Transactions in unspent_txn_pool:
+192 200 217 218 197 216 219 220 222 224 223 
+Transactions in block's txn_pool:
+192 200 218 197 216 219 220 222 224 223 
+
+Node:3
+Transactions in unspent_txn_pool:
+192 200 217 218 197 216 219 220 222 224 223 
+Transactions in block's txn_pool:
+192 200 217 218 216 219 220 222 224 223 
+
+Node:2
+Transactions in unspent_txn_pool:
+192 200 217 197 218 216 220 219 222 224 223 
+Transactions in block's txn_pool:
+192 200 197 218 216 220 219 222 224 223 
+
+Node:2
+Transactions in unspent_txn_pool:
+217 
+Transactions in block's txn_pool:
+217 
+
+Node:3
+Transactions in unspent_txn_pool:
+192 200 217 218 197 216 219 220 222 224 223 
+Transactions in block's txn_pool:
+192 200 217 218 197 216 219 222 224 223 
+
+Node:3
+Transactions in unspent_txn_pool:
+220 
+Transactions in block's txn_pool:
+220 
+
+Node:3
+Transactions in unspent_txn_pool:
+220 
+Transactions in block's txn_pool:
+220 
+
+Node:1
+Transactions in unspent_txn_pool:
+220 
+Transactions in block's txn_pool:
+220 
+
+Node:1
+Transactions in unspent_txn_pool:
+220 
+Transactions in block's txn_pool:
+220 
+
+Node:1
+Transactions in unspent_txn_pool:
+220 
+Transactions in block's txn_pool:
+220 
+
+Node:1
+Transactions in unspent_txn_pool:
+221 
+Transactions in block's txn_pool:
+221 
+
+Node:3
+Transactions in unspent_txn_pool:
+221 
+Transactions in block's txn_pool:
+221 
+
+Node:3
+Transactions in unspent_txn_pool:
+221 
+Transactions in block's txn_pool:
+221 
+
+Node:2
+Transactions in unspent_txn_pool:
+221 
+Transactions in block's txn_pool:
+221 
+
+Node:3
+Transactions in unspent_txn_pool:
+225 226 238 245 244 247 243 248 251 250 246 249 254 252 255 257 253 256 258 259 261 260 264 263 
+Transactions in block's txn_pool:
+225 245 247 243 248 249 253 256 260 263 
+
+Node:3
+Transactions in unspent_txn_pool:
+225 226 238 245 244 247 243 248 251 250 246 249 254 252 255 257 253 256 258 259 261 260 264 263 
+Transactions in block's txn_pool:
+238 247 246 249 254 257 253 256 260 263 
+
+Node:2
+Transactions in unspent_txn_pool:
+226 225 238 245 244 247 248 243 250 251 246 249 254 252 257 253 255 256 261 259 258 260 264 263 
+Transactions in block's txn_pool:
+225 238 245 247 252 257 253 255 256 264 
+
+Node:3
+Transactions in unspent_txn_pool:
+225 226 245 244 243 248 251 250 252 255 258 259 261 264 
+Transactions in block's txn_pool:
+225 226 245 243 251 250 252 258 259 264 
+
+Node:2
+Transactions in unspent_txn_pool:
+226 225 238 245 244 247 248 243 250 251 246 249 254 252 257 253 255 256 261 259 258 260 264 263 
+Transactions in block's txn_pool:
+226 238 247 250 249 257 258 260 264 263 
+
+Node:3
+Transactions in unspent_txn_pool:
+225 226 245 244 243 248 251 250 252 255 258 259 261 264 
+Transactions in block's txn_pool:
+225 226 245 243 248 251 250 252 258 264 
+
+Node:3
+Transactions in unspent_txn_pool:
+225 226 245 244 243 248 251 250 252 255 258 259 261 264 
+Transactions in block's txn_pool:
+225 226 245 244 250 252 255 259 261 264 
+
+Node:2
+Transactions in unspent_txn_pool:
+226 225 245 244 248 243 250 251 252 255 261 259 258 264 
+Transactions in block's txn_pool:
+226 244 243 251 252 255 261 259 258 264 
+
+Node:1
+Transactions in unspent_txn_pool:
+225 226 238 245 244 247 243 248 250 251 246 249 254 252 253 255 257 259 261 256 258 260 264 263 
+Transactions in block's txn_pool:
+226 248 249 254 252 259 256 258 260 263 
+
+Node:3
+Transactions in unspent_txn_pool:
+243 248 251 258 
+Transactions in block's txn_pool:
+243 248 251 258 
+
+Node:3
+Transactions in unspent_txn_pool:
+243 248 251 258 
+Transactions in block's txn_pool:
+243 248 251 258 
+
+Node:3
+Transactions in unspent_txn_pool:
+243 248 251 258 
+Transactions in block's txn_pool:
+243 248 251 258 
+
+Node:2
+Transactions in unspent_txn_pool:
+225 245 248 250 
+Transactions in block's txn_pool:
+225 245 248 250 
+
+Node:1
+Transactions in unspent_txn_pool:
+225 226 238 245 244 247 243 248 250 251 246 249 254 252 253 255 257 259 261 256 258 260 264 263 
+Transactions in block's txn_pool:
+245 247 243 248 246 252 253 255 259 258 
+
+Node:2
+Transactions in unspent_txn_pool:
+225 245 248 250 
+Transactions in block's txn_pool:
+225 245 248 250 
+
+Node:1
+Transactions in unspent_txn_pool:
+243 248 251 258 
+Transactions in block's txn_pool:
+243 248 251 258 
+
+Node:3
+Transactions in unspent_txn_pool:
+251 258 
+Transactions in block's txn_pool:
+251 258 
+
+Node:2
+Transactions in unspent_txn_pool:
+225 245 248 
+Transactions in block's txn_pool:
+225 245 248 
+
+Node:2
+Transactions in unspent_txn_pool:
+265 
+Transactions in block's txn_pool:
+265 
+
+Node:3
+Transactions in unspent_txn_pool:
+265 
+Transactions in block's txn_pool:
+265 
+
+Node:1
+Transactions in unspent_txn_pool:
+265 
+Transactions in block's txn_pool:
+265 
+
+Node:3
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 296 297 299 295 301 300 303 
+Transactions in block's txn_pool:
+262 285 291 292 290 293 294 299 301 303 
+
+Node:3
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 296 297 299 295 301 300 
+Transactions in block's txn_pool:
+285 266 291 292 290 296 297 299 301 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 296 297 299 295 301 300 
+Transactions in block's txn_pool:
+262 285 290 293 294 296 297 299 295 301 
+
+Node:1
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 297 296 299 295 301 300 
+Transactions in block's txn_pool:
+266 291 292 289 290 294 296 299 295 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 296 297 299 295 301 300 
+Transactions in block's txn_pool:
+262 285 266 291 289 293 294 297 295 300 
+
+Node:1
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 297 296 299 295 301 300 
+Transactions in block's txn_pool:
+285 266 292 289 293 297 296 299 295 301 
+
+Node:3
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:1
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 297 296 299 295 301 300 
+Transactions in block's txn_pool:
+285 266 291 292 289 294 296 299 295 301 
+
+Node:1
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 297 296 299 295 301 300 
+Transactions in block's txn_pool:
+262 285 266 291 292 289 290 293 294 301 
+
+Node:2
+Transactions in unspent_txn_pool:
+262 285 266 291 292 289 290 293 294 296 297 299 295 301 300 
+Transactions in block's txn_pool:
+285 289 290 293 294 296 297 295 301 300 
+
+Node:1
+Transactions in unspent_txn_pool:
+262 291 290 294 300 
+Transactions in block's txn_pool:
+262 291 290 294 300 
+
+Node:3
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:3
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:3
+Transactions in unspent_txn_pool:
+266 289 296 297 295 300 
+Transactions in block's txn_pool:
+266 289 296 297 295 300 
+
+Node:2
+Transactions in unspent_txn_pool:
+303 
+Transactions in block's txn_pool:
+303 
+
+Node:1
+Transactions in unspent_txn_pool:
+303 
+Transactions in block's txn_pool:
+303 
+
+Node:1
+Transactions in unspent_txn_pool:
+303 
+Transactions in block's txn_pool:
+303 
+
+Node:1
+Transactions in unspent_txn_pool:
+303 
+Transactions in block's txn_pool:
+303 
+
+Node:3
+Transactions in unspent_txn_pool:
+304 
+Transactions in block's txn_pool:
+304 
+
+Node:3
+Transactions in unspent_txn_pool:
+326 
+Transactions in block's txn_pool:
+326 
+
+Node:1
+Transactions in unspent_txn_pool:
+304 
+Transactions in block's txn_pool:
+304 
+
+Node:1
+Transactions in unspent_txn_pool:
+326 
+Transactions in block's txn_pool:
+326 
+
+Node:2
+Transactions in unspent_txn_pool:
+326 
+Transactions in block's txn_pool:
+326 
+
+Node:1
+Transactions in unspent_txn_pool:
+298 302 328 333 336 335 334 338 339 337 342 343 344 
+Transactions in block's txn_pool:
+298 333 336 335 334 338 339 342 343 344 
+
+Node:1
+Transactions in unspent_txn_pool:
+298 302 328 333 336 335 334 338 339 337 342 343 344 
+Transactions in block's txn_pool:
+298 302 328 333 335 334 337 342 343 344 
+
+Node:1
+Transactions in unspent_txn_pool:
+298 302 328 333 336 335 334 338 339 337 342 343 344 
+Transactions in block's txn_pool:
+298 302 333 336 334 338 337 342 343 344 
+
+Node:1
+Transactions in unspent_txn_pool:
+336 338 339 
+Transactions in block's txn_pool:
+336 338 339 
+
+Node:2
+Transactions in unspent_txn_pool:
+298 302 328 333 336 335 334 339 338 337 342 343 344 
+Transactions in block's txn_pool:
+302 328 333 336 335 334 339 337 342 344 
+
+Node:3
+Transactions in unspent_txn_pool:
+336 338 339 
+Transactions in block's txn_pool:
+336 338 339 
+
+Node:2
+Transactions in unspent_txn_pool:
+298 338 343 
+Transactions in block's txn_pool:
+298 338 343 
+
+Node:3
+Transactions in unspent_txn_pool:
+336 338 339 
+Transactions in block's txn_pool:
+336 338 339 
+
+Node:3
+Transactions in unspent_txn_pool:
+344 
+Transactions in block's txn_pool:
+344 
+
+Node:3
+Transactions in unspent_txn_pool:
+344 
+Transactions in block's txn_pool:
+344 
+
+Node:3
+Transactions in unspent_txn_pool:
+344 
+Transactions in block's txn_pool:
+344 
+
+Node:3
+Transactions in unspent_txn_pool:
+340 
+Transactions in block's txn_pool:
+340 
+
+Node:3
+Transactions in unspent_txn_pool:
+340 
+Transactions in block's txn_pool:
+340 
+
+Node:2
+Transactions in unspent_txn_pool:
+340 
+Transactions in block's txn_pool:
+340 
+
+Node:1
+Transactions in unspent_txn_pool:
+340 
+Transactions in block's txn_pool:
+340 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+363 341 365 364 362 367 370 369 372 373 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 363 341 364 362 368 367 370 369 372 
+
+Node:3
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 357 363 365 364 362 368 370 369 373 
+
+Node:3
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 357 363 341 362 367 370 369 372 373 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 363 341 364 362 368 367 370 372 373 
+
+Node:3
+Transactions in unspent_txn_pool:
+341 367 372 
+Transactions in block's txn_pool:
+341 367 372 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 363 341 364 368 367 370 369 372 373 
+
+Node:3
+Transactions in unspent_txn_pool:
+341 367 372 
+Transactions in block's txn_pool:
+341 367 372 
+
+Node:2
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 368 362 370 367 369 372 
+Transactions in block's txn_pool:
+345 357 341 365 364 368 362 367 369 372 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 363 341 365 364 362 368 367 370 369 372 373 
+Transactions in block's txn_pool:
+345 357 363 341 365 362 368 369 372 373 
+
+Node:2
+Transactions in unspent_txn_pool:
+341 367 372 
+Transactions in block's txn_pool:
+341 367 372 
+
+Node:1
+Transactions in unspent_txn_pool:
+345 357 368 
+Transactions in block's txn_pool:
+345 357 368 
+
+Node:1
+Transactions in unspent_txn_pool:
+357 
+Transactions in block's txn_pool:
+357 
+
+Node:1
+Transactions in unspent_txn_pool:
+357 
+Transactions in block's txn_pool:
+357 
+
+Node:2
+Transactions in unspent_txn_pool:
+373 
+Transactions in block's txn_pool:
+373 
+
+Node:2
+Transactions in unspent_txn_pool:
+373 
+Transactions in block's txn_pool:
+373 
+
+Node:2
+Transactions in unspent_txn_pool:
+373 
+Transactions in block's txn_pool:
+373 
+
+Node:2
+Transactions in unspent_txn_pool:
+373 
+Transactions in block's txn_pool:
+373 
+
+Node:3
+Transactions in unspent_txn_pool:
+366 393 374 371 394 397 396 398 400 399 395 401 403 405 402 406 408 409 410 411 407 
+Transactions in block's txn_pool:
+366 374 396 398 395 401 403 405 402 409 
+
+Node:3
+Transactions in unspent_txn_pool:
+393 371 394 397 400 399 406 408 410 411 407 
+Transactions in block's txn_pool:
+393 371 394 397 400 399 406 408 410 411 
+
+Node:3
+Transactions in unspent_txn_pool:
+393 371 394 397 400 399 406 408 410 411 407 
+Transactions in block's txn_pool:
+393 394 397 400 399 406 408 410 411 407 
+
+Node:3
+Transactions in unspent_txn_pool:
+393 371 394 397 400 399 406 408 410 411 407 
+Transactions in block's txn_pool:
+393 371 394 397 399 406 408 410 411 407 
+
+Node:2
+Transactions in unspent_txn_pool:
+366 393 374 394 371 396 397 398 400 399 395 401 403 405 402 406 408 409 410 411 407 
+Transactions in block's txn_pool:
+393 396 397 400 395 405 406 409 411 407 
+
+Node:2
+Transactions in unspent_txn_pool:
+366 374 394 371 398 399 401 403 402 408 410 
+Transactions in block's txn_pool:
+366 374 394 371 398 399 401 403 402 410 
+
+Node:3
+Transactions in unspent_txn_pool:
+407 
+Transactions in block's txn_pool:
+407 
+
+Node:3
+Transactions in unspent_txn_pool:
+407 
+Transactions in block's txn_pool:
+407 
+
+Node:3
+Transactions in unspent_txn_pool:
+407 
+Transactions in block's txn_pool:
+407 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:2
+Transactions in unspent_txn_pool:
+408 
+Transactions in block's txn_pool:
+408 
+
+Node:1
+Transactions in unspent_txn_pool:
+412 
+Transactions in block's txn_pool:
+412 
+
+Node:2
+Transactions in unspent_txn_pool:
+412 
+Transactions in block's txn_pool:
+412 
+
+Node:1
+Transactions in unspent_txn_pool:
+404 
+Transactions in block's txn_pool:
+404 
+
+Node:3
+Transactions in unspent_txn_pool:
+404 412 
+Transactions in block's txn_pool:
+404 412 
+
+Node:2
+Transactions in unspent_txn_pool:
+404 
+Transactions in block's txn_pool:
+404 
+
+Node:2
+Transactions in unspent_txn_pool:
+437 434 413 
+Transactions in block's txn_pool:
+437 434 413 
+
+Node:3
+Transactions in unspent_txn_pool:
+437 434 
+Transactions in block's txn_pool:
+437 434 
+
+Node:1
+Transactions in unspent_txn_pool:
+434 437 
+Transactions in block's txn_pool:
+434 437 
+
+Node:3
+Transactions in unspent_txn_pool:
+413 
+Transactions in block's txn_pool:
+413 
+
+Node:1
+Transactions in unspent_txn_pool:
+434 437 413 
+Transactions in block's txn_pool:
+434 437 413 
+
+Node:3
+Transactions in unspent_txn_pool:
+442 441 450 443 452 449 454 451 453 456 457 
+Transactions in block's txn_pool:
+441 450 443 452 449 454 451 453 456 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+442 441 450 443 452 449 454 451 453 456 457 
+Transactions in block's txn_pool:
+442 450 443 452 449 454 451 453 456 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+442 441 450 443 452 449 454 451 453 456 457 
+Transactions in block's txn_pool:
+442 441 450 443 452 449 454 451 456 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+442 441 450 443 452 449 454 451 453 456 457 
+Transactions in block's txn_pool:
+442 441 450 443 452 449 454 451 453 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+442 441 450 443 452 449 454 451 453 456 457 
+Transactions in block's txn_pool:
+442 441 450 443 452 449 454 451 453 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+456 
+Transactions in block's txn_pool:
+456 
+
+Node:3
+Transactions in unspent_txn_pool:
+456 
+Transactions in block's txn_pool:
+456 
+
+Node:1
+Transactions in unspent_txn_pool:
+442 441 443 449 450 452 454 451 456 453 457 
+Transactions in block's txn_pool:
+442 443 449 450 452 454 451 456 453 457 
+
+Node:1
+Transactions in unspent_txn_pool:
+442 441 443 449 450 452 454 451 456 453 457 
+Transactions in block's txn_pool:
+442 441 443 449 450 452 454 456 453 457 
+
+Node:3
+Transactions in unspent_txn_pool:
+456 
+Transactions in block's txn_pool:
+456 
+
+Node:3
+Transactions in unspent_txn_pool:
+456 
+Transactions in block's txn_pool:
+456 
+
+Node:3
+Transactions in unspent_txn_pool:
+456 
+Transactions in block's txn_pool:
+456 
+
+Node:1
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:1
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:1
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:1
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:2
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:1
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:2
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:2
+Transactions in unspent_txn_pool:
+451 
+Transactions in block's txn_pool:
+451 
+
+Node:3
+Transactions in unspent_txn_pool:
+459 480 481 458 483 482 484 486 455 488 487 490 485 491 492 489 494 496 
+Transactions in block's txn_pool:
+481 458 482 455 487 490 485 492 494 496 
+
+Node:3
+Transactions in unspent_txn_pool:
+459 480 481 458 483 482 484 486 455 488 487 490 485 491 492 489 494 496 
+Transactions in block's txn_pool:
+480 482 484 455 488 487 490 491 489 494 
+
+Node:3
+Transactions in unspent_txn_pool:
+459 480 481 458 483 482 484 486 455 488 487 490 485 491 492 489 494 496 
+Transactions in block's txn_pool:
+480 481 482 484 486 455 488 490 494 496 
+
+Node:3
+Transactions in unspent_txn_pool:
+459 481 458 483 486 485 492 496 
+Transactions in block's txn_pool:
+459 481 458 483 486 485 492 496 
+
+Node:1
+Transactions in unspent_txn_pool:
+459 481 480 458 483 482 484 486 455 488 487 490 485 491 492 489 494 496 
+Transactions in block's txn_pool:
+481 458 482 484 455 487 490 485 491 492 
+
+Node:1
+Transactions in unspent_txn_pool:
+459 481 458 483 486 485 492 496 
+Transactions in block's txn_pool:
+459 481 458 483 486 485 492 496 
+
+Node:2
+Transactions in unspent_txn_pool:
+459 481 458 483 486 485 492 496 493 
+Transactions in block's txn_pool:
+459 481 458 483 486 485 492 496 493 
+
+Node:1
+Transactions in unspent_txn_pool:
+459 481 458 483 486 485 492 496 
+Transactions in block's txn_pool:
+459 481 458 483 486 485 492 496 
+
+Node:2
+Transactions in unspent_txn_pool:
+459 481 458 483 486 485 492 496 493 
+Transactions in block's txn_pool:
+459 481 458 483 486 485 492 496 493 
+
+Node:1
+Transactions in unspent_txn_pool:
+493 
+Transactions in block's txn_pool:
+493 
+
+Node:1
+Transactions in unspent_txn_pool:
+493 
+Transactions in block's txn_pool:
+493 
+
+Node:1
+Transactions in unspent_txn_pool:
+493 
+Transactions in block's txn_pool:
+493 
+
+Node:1
+Transactions in unspent_txn_pool:
+493 
+Transactions in block's txn_pool:
+493 
+
+Node:3
+Transactions in unspent_txn_pool:
+493 
+Transactions in block's txn_pool:
+493 
+
+Node:1
+Transactions in unspent_txn_pool:
+495 
+Transactions in block's txn_pool:
+495 
+
+Node:2
+Transactions in unspent_txn_pool:
+495 
+Transactions in block's txn_pool:
+495 
+
+Node:3
+Transactions in unspent_txn_pool:
+495 
+Transactions in block's txn_pool:
+495 
+
+Node:3
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:3
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:2
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:1
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:1
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:1
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:1
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
+Node:1
+Transactions in unspent_txn_pool:
+498 497 
+Transactions in block's txn_pool:
+498 497 
+
