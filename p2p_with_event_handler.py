@@ -145,7 +145,7 @@ def generate_valid_txn_list(node):
     max_no_of_attempts = 40
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
         num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))        
-        txn_list = [node.unspent_txn_pool[i] for i in sorted(random.sample(range(len(node.unspent_txn_pool)), num_txns))]
+        txn_list = [node.unspent_txn_pool[i] for i in sorted(random_sample.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
         txns_valid_flag = 1
         for txn in txn_list:
@@ -687,7 +687,8 @@ if __name__ == "__main__":
             for event in event_list:
                 f.write(event[1].event_type + " at " + str(event[0]) + "\n")
                 f.write("src_node: " + str(event[1].src_node.id) + "\n")
-                f.write("src_node: " + str(event[1].event_packet.id) + "\n")
+                if event[1].event_type != "retry_mining":
+                    f.write("Event Packet ID: " + str(event[1].event_packet.id) + "\n")
 
 
 

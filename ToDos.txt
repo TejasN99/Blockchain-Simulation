@@ -4,6 +4,7 @@ ToDos:
 ✓ If node has not seen a txn, dont add it back to utxo during fork resolution
 ✓ In generate_block, remove transactions in txn_pool from unspent_txn_pool
 ✓ Deal normal block generation scenario without fork resolution code
+Write seperate log files for each node
 
 Testing???
 
