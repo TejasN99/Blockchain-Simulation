@@ -1,0 +1,23 @@
+Number of nodes: 3
+
+Node ID: 1
+Number of txns in unspent_txn_pool: 5
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 2
+Number of txns in unspent_txn_pool: 5
+Currently mining on: 0
+Number of leaf blocks: 1
+Node ID: 3
+Number of txns in unspent_txn_pool: 5
+Currently mining on: 3
+Number of leaf blocks: 1
+Current Time: 1
+
+Current state of event_list:
+generate_block at 48392.50387296368
+src_node: 2
+Event Packet ID: 2
+generate_block at 71575.44471081013
+src_node: 1
+Event Packet ID: 1
