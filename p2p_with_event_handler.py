@@ -144,6 +144,11 @@ class Event:
 
 
 def write_logs_for_nodes():
+    """
+    A function that creates a folder conatining:
+    1) A log file for each node which captures events associated with the node
+    2) An overall_stats file that calculates overall statistics for the simulation
+    """
     log_folder = "Log_I_" + str(I) + "_ttx_" + str(ttx) + "_nodes_" + str(total_nodes) + "_z0_" + str(z0) + "_z1_" + str(z1) + "_TXNS_" + str(TOTAL_TXNS)
 
     log_folder_path = os.path.join(os. getcwd(), log_folder)
@@ -290,6 +295,21 @@ def write_logs_for_nodes():
 # 1) A list of valid  txns 
 # 2) Balance sheet of the new block that will be generated
 def generate_valid_txn_list(node):
+    """
+    A function which tries to genereate a valid set of transactions to form a block
+    The transactions are picked from the UTXO Pool of the mining node
+    Parameters
+    ----------
+    Node object that intends to mine a block
+
+    Returns
+    -------
+    txn_list: A subset of transactions from the Node's UTXO that are valid
+    balance_sheet: The updated balannce sheet for each node after considering all the transactions
+    of the blocks 
+    """
+
+    
     print("generate_valid_txn_list for node ",node.id)
     print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
     if len(node.unspent_txn_pool) < MIN_TXNS_BLOCK:        
@@ -371,9 +391,17 @@ def generate_valid_txn_list(node):
     #     return txn_list, balance_sheet
 
 def network_topology():
-    # total_nodes=randint(10,20)
-    # total_nodes = randint(NUM_NODES_MIN,NUM_NODES_MAX)
-    #print("Total Nodes are",total_nodes)
+    """
+    A function to setup the intial network topology
+
+    Returns
+    -------
+    node_graph: A dictionary with key as node id and value is list of peer node ids 
+    node_speed: A dictionary with key as node id and value is Fast/Slow 
+    node_hash: A dictionary with key as node id and value is High/Low
+    total_nodes: Total Nodes in the setup
+    init_node_bal: A dictionary with key as node id and value is node's inital balances
+    """
     #Creating a random network of nodes and checking if it connected or not 
     connected=False
     while not (connected):
@@ -503,6 +531,20 @@ def start_mining(event_list, ttx):
 
 # Check for connectedness
 def check_connectedness(visited_nodes,node_graph,current_node,total_nodes):
+    """
+    The function chceks if node graph is connected or not by performing a DFS on it
+
+    Parameters
+    ----------
+    visited_nodes: A list of node ids that have already been visited
+    node_graph: A dictionary with key as node id and value is a list of peer node ids
+    current_node: The node on which DFS is run
+    total_nodes: Total Nodes in the setup
+    Returns
+    ----------
+    True: If graph is connected
+    False: Otherwise
+    """
     if current_node not in visited_nodes:
         visited_nodes.append(current_node)
         for peer_node in node_graph[current_node]:
@@ -512,6 +554,19 @@ def check_connectedness(visited_nodes,node_graph,current_node,total_nodes):
         return True
 
 def latency(sender_node,receiver_node,message_bits):
+    """
+    Function calculates the time delay of sending a packet from one node to the other node 
+
+    Parameters
+    ----------
+    sender_node:Node object from which packet is sent
+    receiver_node:Node object receiving the packet
+    message_bits: Packet size 
+    
+    Returns
+    ----------
+    The delay of packet in ms
+    """
     if sender_node.speed == 'Fast' and receiver_node.speed == 'Fast':
         link_speed = 100
     else:
@@ -545,6 +600,16 @@ def restart_mining(node, event_list, new_block, cur_execution_time):
 
 
 def event_handler(event_list, event, ttx):
+    """
+    A function that traverses a min heap: event_list (Top element is a the event with min timestamp)
+    and handles events case-wise.
+    Parameters
+    ----------
+    event_list: A min heap containing a list of tuple: 1st element is timestamp and 2nd element is the event object 
+    event: The event object 
+    ttx: Average interarrival time between two transactions
+    """
+
     if event.event_type == "generate_txn":
         global txn_count        
         print("Detected Generate_txn")

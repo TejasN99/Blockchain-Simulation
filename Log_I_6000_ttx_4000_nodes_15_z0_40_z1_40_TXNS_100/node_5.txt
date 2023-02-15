@@ -1,0 +1,16 @@
+Node Type:
+Fast, High CPU Node
+
+Generated block: 5 at 7496.224874798307
+Received block: 28 at 8968.429633720345 with 8 transactions
+Received block: 31 at 9387.74132030283 with 11 transactions
+Generated block: 54 at 30386.104914802698
+Received block: 69 at 38587.5405891699 with 58 transactions
+Received block: 82 at 55110.62397731607 with 26 transactions
+Received block: 97 at 57814.72493159494 with 43 transactions
+Received block: 118 at 59732.188473979404 with 44 transactions
+
+Chains at node:
+G <- 5 <- 28 <- 31 <- 54 <- 69 <- 82 <- 97 <- 118 
+Length of longest chain: 8
+
