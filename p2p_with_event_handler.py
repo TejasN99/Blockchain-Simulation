@@ -76,16 +76,14 @@ class Single_Transaction:
     id : int
         ID of the transaction
 
-    payer : 
+    payer : Node object 
+        Stores the node object of the payer
 
-    execution_time : int
-        The time in milliseconds from the starting of the program when the event should get executed
+    recipient : Node object 
+        Stores the node object of the recipient
 
-    event_type : str
-        Denotes the type of event. Would contain one among the four values: generate_txn, generate_block, receive_txn, receive_block
-
-    event_packet
-        Stores the class object of the associated block or transaction
+    amount : int
+        The amount being transferred
     """
     def __init__(self, payer_node, recipient_node, amount):
         global txn_count
@@ -97,6 +95,23 @@ class Single_Transaction:
 
 
 class Block:
+    """
+    A class to represent each Block
+
+    Attributes
+    ----------
+    id : int
+        The ID of the block
+
+    creator_node : Node object
+        The node object of the node which created the block
+
+    parent : Block object
+        Stores the parent of the block
+
+    balance_sheet : dict
+        Stores the balance sheet at the block. Has node IDs as keys and the balance of the node as values
+    """
     def __init__(self, creator_node, parent, txn_list, balance_sheet):
         global block_count
         self.id = block_count
@@ -123,6 +138,9 @@ class Event:
 
     Attributes
     ----------
+    id : int
+        ID of the Event
+
     execution_time : int
         The time in milliseconds from the starting of the program when the event should get executed
 
@@ -131,6 +149,12 @@ class Event:
 
     event_packet
         Stores the class object of the associated block or transaction
+
+    src_node : Node object
+        Stores the object that generated the event
+    
+    tgt_node : Node object
+        Stores the recipient node, if the event is a receive event
     """
     def __init__(self, execution_time, event_type, event_packet, src_node, tgt_node = None):
         global event_count
@@ -144,6 +168,12 @@ class Event:
 
 
 def write_logs_for_nodes():
+    """
+    A function to write logs for the simulation
+    A folder is created which contains:
+    1) A log file for each node whose format is node_nodenum.txt where nodenum is the node number (e.g: node_1.txt, node_2.txt etc.)
+    2) overall_stats.txt
+    """
     log_folder = "Log_I_" + str(I) + "_ttx_" + str(ttx) + "_nodes_" + str(total_nodes) + "_z0_" + str(z0) + "_z1_" + str(z1) + "_TXNS_" + str(TOTAL_TXNS)
 
     log_folder_path = os.path.join(os. getcwd(), log_folder)
@@ -170,27 +200,11 @@ def write_logs_for_nodes():
             else:
                 f.write("Generated block: " + str(block) + " at " + str(node.block_timestamp[block][0]) + "\n")
         f.write("\nChains at node:\n")
-        
-        # # Removing reduntant leaf blocks
-        # reduntant_leaf_blocks = []
-        # for i in range(len(node.leaf_blocks)):
-        #     for j in range(i+1, len(node.leaf_blocks)):
-        #         block = node.leaf_blocks[j]
-        #         while block.id != 0:
-        #             if node.leaf_blocks[i] == block:
-        #                 reduntant_leaf_blocks.append(i)
-        #                 break
-        #             block = block.parent
-        #         if i in reduntant_leaf_blocks:
-        #             break
-        
+
         # Finding longest chain at the Node
         longest_chain_len = 0
         for leaf_block in node.leaf_blocks:
             longest_chain_len = max(longest_chain_len, leaf_block.chain_length)
-
-            # if leaf_block in [node.leaf_blocks[i] for i in reduntant_leaf_blocks]:
-            #     continue
 
             links = []
             chain = []
@@ -290,6 +304,7 @@ def write_logs_for_nodes():
 # 1) A list of valid  txns 
 # 2) Balance sheet of the new block that will be generated
 def generate_valid_txn_list(node):
+    
     print("generate_valid_txn_list for node ",node.id)
     print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
     if len(node.unspent_txn_pool) < MIN_TXNS_BLOCK:        
@@ -331,49 +346,23 @@ def generate_valid_txn_list(node):
         balance_sheet[node.id] += 50    # Coinbase txn
         return txn_list, balance_sheet
 
-    #     # Max no of txns allowed in a block is 1023
-    #     # num_txns = randint(10,min(1023, len(node.unspent_txn_pool)))
-    #     num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))
-    #     print("Total ", len(node.unspent_txn_pool),"txns")
-    #     print("Picked ",num_txns," txns")
-    #     txn_list = random_sample.sample(node.unspent_txn_pool, num_txns)
-    #     balance_sheet = node.mining_on.balance_sheet.copy()
-    #     txns_valid_flag = 1
-    #     invalid_txns = []
-    #     print(balance_sheet)
-    #     for txn in txn_list:
-    #         if balance_sheet[txn.payer.id] < txn.amount:
-    #             invalid_txns.append(txn)
-    #         else:
-    #             balance_sheet[txn.payer.id] -= txn.amount
-    #             balance_sheet[txn.recipient.id] += txn.amount
-        
-    #     for txn in invalid_txns:
-    #         print("Payer:", txn.payer.id)
-    #         print("Recipient:", txn.recipient.id)
-    #         print("Amount:", txn.amount)
-
-    #     for txn in invalid_txns:
-    #         if balance_sheet[txn.payer.id] < txn.amount:
-    #             txns_valid_flag = 0
-    #             break
-    #         else:
-    #             balance_sheet[txn.payer.id] -= txn.amount
-    #             balance_sheet[txn.recipient.id] -= txn.amount
-    #     no_of_attempts += 1
-    
-    # if no_of_attempts == max_no_of_attempts:
-    #     return None, None
-    # else:
-    #     coinbase_txn = Single_Transaction(None, node, 50)
-    #     txn_list.append(coinbase_txn)
-    #     balance_sheet[node.id] += 50    # Coinbase txn
-    #     return txn_list, balance_sheet
-
 def network_topology():
-    # total_nodes=randint(10,20)
-    # total_nodes = randint(NUM_NODES_MIN,NUM_NODES_MAX)
-    #print("Total Nodes are",total_nodes)
+    """
+    Generates the next 500 transactions, with the inter-arrival between transactions generated by any peer chosen from an exponential distribution whose mean time is Ttx
+
+    Parameters
+    ----------
+    ttx : int
+        Used to choose the inter-arrival time between transactions
+    
+    current_time : int
+        The current time in milliseconds
+
+    Returns
+    -------
+    event_list : list
+        List of the initial 100 events with their time of exexcution
+    """
     #Creating a random network of nodes and checking if it connected or not 
     connected=False
     while not (connected):
@@ -399,12 +388,6 @@ def network_topology():
                 node_graph[i+1].append(node_num)
                 node_graph[node_num].append(i+1)
                 count = count+1
-        #Print num conecctions to each node
-        # for key in node_connections.keys():
-        #     print(key,node_connections[key])
-        #Print list of peers for each node
-        # for key in node_graph.keys():
-        #     print(key,node_graph[key])
         #Returns True or None 
         connected = check_connectedness([],node_graph,1,total_nodes)
     
@@ -436,25 +419,17 @@ def network_topology():
     return node_graph,node_speed,node_hash,total_nodes,init_node_bal  
 
 
-#Periodically Generate Transactions
-#To DO: Time Delay should be an exponenetial Distribution
-#Check balance does not go negative upon txn generation
 def gen_initial_txns():
     """
-    Generates the next 500 transactions, with the inter-arrival between transactions generated by any peer chosen from an exponential distribution whose mean time is Ttx
+    Generates the initial transactions for each node, with the inter-arrival between transactions generated by any peer chosen from an exponential distribution whose mean time is Ttx
 
     Parameters
     ----------
-    ttx : int
-        Used to choose the inter-arrival time between transactions
-    
-    current_time : int
-        The current time in milliseconds
 
     Returns
     -------
     event_list : list
-        List of the initial 100 events with their time of exexcution
+        List of the initial transactions with their time of exexcution
     """
 
     global nodes
@@ -493,6 +468,9 @@ def start_mining(event_list, ttx):
     ----------
     event_list : list
         List of events that has already been generated. The generate_block events are appended to this list.
+
+    ttx : int
+        Avg delay between generating transactions
     """
     c = 0
     for node in nodes.values():
