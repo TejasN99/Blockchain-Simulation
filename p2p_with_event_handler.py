@@ -33,6 +33,22 @@ import time
 import sys
 import heapq as hq
 
+#Global Variables to track txns and events
+txn_count = 1
+block_count = 0
+event_count = 1
+
+# Average Inter-arrival time between blocks 
+I = 60
+
+# Network Topology Params
+NUM_NODES_MIN=3
+NUM_NODES_MAX=4
+PEER_CONN_MIN=1
+PEER_CONN_MAX=2
+
+#Block Generation Params
+MIN_TXNS_BLOCK=5
 
 class Node:
     def __init__(self, id, speed, hash_power, genesis_block, avg_mining_time):
@@ -140,9 +156,9 @@ class Event:
 def generate_valid_txn_list(node):
     print("generate_valid_txn_list for node ",node.id)
     print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
-    if len(node.unspent_txn_pool) < 1:  ## UNDO
-        print("Stuck at 144")
-        print(event_count)
+    if len(node.unspent_txn_pool) < MIN_TXNS_BLOCK:
+        print("Stuck due to less txns in UTXO")
+        print("Event_count",event_count)
         # print("Length of txn_pool too small, returning None")
         return None, None
 
@@ -150,9 +166,8 @@ def generate_valid_txn_list(node):
     no_of_attempts = 0
     max_no_of_attempts = 50 #UNDO
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
-        num_txns=min(10, len(node.unspent_txn_pool))
-        #num_txns = randint(1, min(3, len(node.unspent_txn_pool)))     ## UNDO
-        # num_txns = randint(1,min(1023, len(node.unspent_txn_pool)))
+        #Pick min 1 txn and max 1023 or length of UTXO txns
+        num_txns = randint(MIN_TXNS_BLOCK, min(1023, len(node.unspent_txn_pool)))
         txn_list = [node.unspent_txn_pool[i] for i in sorted(random_sample.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
         txns_valid_flag = 1
@@ -228,7 +243,7 @@ def generate_valid_txn_list(node):
 
 def network_topology():
     # total_nodes=randint(10,20)
-    total_nodes = randint(3,4)      ## UNDO
+    total_nodes = randint(NUM_NODES_MIN,NUM_NODES_MAX)
     #print("Total Nodes are",total_nodes)
     #Creating a random network of nodes and checking if it connected or not 
     connected=False
@@ -242,7 +257,7 @@ def network_topology():
         for i in range(total_nodes):
             #Number of nodes connected to each node
             # node_connections[i+1]=randint(4,8)
-            node_connections[i+1]=randint(1,2) ## UNDO
+            node_connections[i+1]=randint(PEER_CONN_MIN,PEER_CONN_MAX )
             # node_connections[i+1]=randint(2,3)
             count=len(node_graph[i+1])
             while count<node_connections[i+1]:
@@ -329,7 +344,7 @@ def gen_initial_txns():
 
         #print("txn execution time",txn_execution_time)
         txn_event = Event(c, "generate_txn", txn, nodes[payer_node_id])
-        print("Event Count",event_count)
+        print("Event Count:generate_txn",event_count)
         
         #Global list containing list of events
         #Add time-stamp concept and event listed to be always sorted by time stamp
@@ -339,6 +354,7 @@ def gen_initial_txns():
 
 
 def start_mining(event_list, ttx):
+    
     """
     The function adds a mining event for each node in the network
 
@@ -360,6 +376,7 @@ def start_mining(event_list, ttx):
         #     mining_event = Event(execution_time, "generate_block", new_block, node)
         #     hq.heappush(event_list,(execution_time, mining_event))
         retry_mining_event = Event(ttx + c, "retry_mining", None, node)
+        print("Event Count:retry_mining",event_count)
         hq.heappush(event_list, (ttx + c, retry_mining_event))
         c += 1    
 
@@ -406,12 +423,14 @@ def restart_mining(node, event_list, new_block, cur_execution_time):
     txn_list, new_balance_sheet = generate_valid_txn_list(node)
     if txn_list == None:
         retry_mining_event = Event(cur_execution_time + 5*ttx, "retry_mining", None, node)
+        print("Event Count:retry_mining",event_count)
         hq.heappush(event_list, (cur_execution_time + 5*ttx, retry_mining_event))
     else:
         mining_time = random.exponential(scale = node.avg_mining_time)
         execution_time = cur_execution_time + mining_time
         new_block = Block(node, node.mining_on, txn_list, new_balance_sheet)
         mining_event = Event(execution_time, "generate_block", new_block, node)
+        print("Event Count:generate_block",event_count)
         hq.heappush(event_list,(execution_time, mining_event))
 
 
@@ -436,10 +455,11 @@ def event_handler(event_list, event, ttx):
             # print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
             # print("Event Count",event_count)
             receive_event=Event(execution_time,"receive_txn",event_packet,src_node,peer_node)
+            print("Event Count:receive_txn",event_count)
             hq.heappush(event_list,(execution_time,receive_event))
         
         if txn_count > 500:
-            print("Shashank")
+            print("Txn Count>500 reached!!")
             return
 
         # One generate_txn event spawns the next generate_txn event from the same node
@@ -452,6 +472,7 @@ def event_handler(event_list, event, ttx):
         # print("Txnid",txn_count,"Node ", payer_node_id," pays","Node ",recipient_node_id," ",amount," BTC$")
         new_txn_duration = random.exponential(scale = ttx)
         new_txn_event = Event(event.execution_time + new_txn_duration, "generate_txn", txn, nodes[payer_node_id])
+        print("Event Count:generate_txn",event_count)
         hq.heappush(event_list,(event.execution_time + new_txn_duration,new_txn_event))
 
     elif event.event_type=="generate_block":        
@@ -463,17 +484,23 @@ def event_handler(event_list, event, ttx):
         # print("Leaf Nodes:")
         # for node in src_node.leaf_blocks:
         #     print(node.id)
+
+        
+        #Doubt: Directly changing leaf nodes ?? NO extra checks??
+        "Removing current mining block as leaf and adding new block as leaf node as mining on previous is complete"
         src_node.leaf_blocks.remove(src_node.mining_on)
         src_node.leaf_blocks.append(new_block)
         src_node.mining_on = new_block
+
         print("UTXO Length b4 block generation",len(src_node.unspent_txn_pool))
 
-        # Removing the txns in new block from the node's unspent_txn_pool
+        "Removing the txns in new block from the node's unspent_txn_pool"
         for txn in new_block.txn_list:
             try:
                 if txn in src_node.unspent_txn_pool:
                     src_node.unspent_txn_pool.remove(txn)
                     print("Removed from UTXO Txn id",txn.id)
+            #Doubt: This is useless now as we already check for presence of txn in UTXO b4 removing??
             except Exception as err:
                 print("Encountered error:", err)
                 print("Node:" + str(src_node.id))
@@ -495,27 +522,34 @@ def event_handler(event_list, event, ttx):
 
 
         print("UTXO Length after block generation",len(src_node.unspent_txn_pool))
+        
+        "Triggering Receive Block Event to all the node peers"
         for peer_node in node_graph[src_node]:
             prev_execution_time=event.execution_time
-            print("Previous exec time of event is",prev_execution_time)
+            #print("Previous exec time of event is",prev_execution_time)
             latency_delay=latency(src_node, peer_node, new_block.block_size)
             execution_time=prev_execution_time+latency_delay
-            print("New exec time of event is",execution_time)
-            print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
-            print("Event Count",event_count)
+            #print("New exec time of event is",execution_time)
+            #print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
             receive_event=Event(execution_time,"receive_block",new_block,src_node,peer_node)
+            print("Event Count:receive_block",event_count)
             hq.heappush(event_list,(execution_time,receive_event))
         
 
+        "Below are 2 parameters of the new block that will be generated by the source node"
         new_txn_list, balance_sheet = generate_valid_txn_list(src_node)
+
+        "None means UTXO is empty currently: Trigger retry_mining"
         if new_txn_list == None:
             retry_mining_event = Event(5*ttx + event.execution_time, "retry_mining", None, src_node)
+            print("Event Count:retry_mining",event_count)
             hq.heappush(event_list, (5*ttx + event.execution_time, retry_mining_event))
         else:
             next_block = Block(src_node, src_node.mining_on, new_txn_list, balance_sheet)
             print("Node", src_node.id,"started mining new block")
             mining_duration = random.exponential(scale = src_node.avg_mining_time)
             new_mining_event = Event(event.execution_time + mining_duration, "generate_block", next_block, src_node)
+            print("Event Count",event_count,":generate_block scheduled at node",src_node.id)
             hq.heappush(event_list,(event.execution_time + mining_duration, new_mining_event))
 
     elif event.event_type=="receive_txn":
@@ -548,6 +582,7 @@ def event_handler(event_list, event, ttx):
                     # print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
                     # print("Event Count",event_count)
                     receive_event=Event(execution_time,"receive_txn",event_packet,src_node,peer_node)
+                    print("Event Count:receive_txn",event_count)
                     hq.heappush(event_list,(execution_time,receive_event))
                 else:
                     pass
@@ -592,8 +627,8 @@ def event_handler(event_list, event, ttx):
                     execution_time = cur_time + latency_delay
                     print("New exec time of event is",execution_time)
                     print("Latency between",src_node.id," ",peer_node.id,"is ",latency_delay)
-                    print("Event Count",event_count)
                     receive_event = Event(execution_time,"receive_block", new_block, src_node, peer_node)
+                    print("Event Count:receive_block",event_count)
                     hq.heappush(event_list,(execution_time,receive_event))
                 else:
                     print("Not sending receive block from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
@@ -614,8 +649,8 @@ def event_handler(event_list, event, ttx):
                     new_block_chain.append(block)
                     block = block.parent
 
-                print("current_mining_chain:", current_mining_chain)
-                print("new_block_chain:", new_block_chain)
+                # print("current_mining_chain:", current_mining_chain)
+                # print("new_block_chain:", new_block_chain)
                 if current_mining_chain != []:
                     print("len of current_mining_chain:", len(current_mining_chain))
                     print("len of new_block_chain:", len(new_block_chain))
@@ -647,44 +682,41 @@ def event_handler(event_list, event, ttx):
         txn_list, new_balance_sheet = generate_valid_txn_list(src_node)
         if txn_list == None:
             retry_mining_event = Event(cur_time + 5*ttx, "retry_mining", None, src_node)
+            print("Event Count:retry_mining",event_count)
             hq.heappush(event_list, (cur_time + 5*ttx, retry_mining_event))
         else:
             mining_time = random.exponential(scale = src_node.avg_mining_time)
             execution_time = cur_time + mining_time
             new_block = Block(src_node, src_node.mining_on, txn_list, new_balance_sheet)
             mining_event = Event(execution_time, "generate_block", new_block, src_node)
+            print("Event Count:generate_block",event_count)
             hq.heappush(event_list,(execution_time, mining_event))
 
 
-def write_logs(event_list):
-    global nodes
-    f = open("log_" + str(cur_time) + ".txt", "w")
-    f.write("Number of nodes: " + str(total_nodes) +"\n")
-    for node in nodes.values():
-        f.write("\nNode ID: " + str(node.id) + "\n")
-        f.write("Number of txns in unspent_txn_pool: " + str(len(node.unspent_txn_pool)) + "\n")
-        f.write("Currently mining on: " + str(node.mining_on.id) + "\n")
-        f.write("Number of leaf blocks: " + str(len(node.leaf_blocks)))
+# def write_logs(event_list):
+#     global nodes
+#     f = open("log_" + str(cur_time) + ".txt", "w")
+#     f.write("Number of nodes: " + str(total_nodes) +"\n")
+#     for node in nodes.values():
+#         f.write("\nNode ID: " + str(node.id) + "\n")
+#         f.write("Number of txns in unspent_txn_pool: " + str(len(node.unspent_txn_pool)) + "\n")
+#         f.write("Currently mining on: " + str(node.mining_on.id) + "\n")
+#         f.write("Number of leaf blocks: " + str(len(node.leaf_blocks)))
 
-    f.write("\nCurrent Time: " + str(cur_time))
-    f.write("\n\nCurrent state of event_list:\n")
-    for event in event_list:
-        f.write(event[1].event_type + " at " + str(event[0]) + "\n")
-        f.write("src_node: " + str(event[1].src_node.id) + "\n")
-        if event[1].event_type != "retry_mining":
-            f.write("Event Packet ID: " + str(event[1].event_packet.id) + "\n")
+#     f.write("\nCurrent Time: " + str(cur_time))
+#     f.write("\n\nCurrent state of event_list:\n")
+#     for event in event_list:
+#         f.write(event[1].event_type + " at " + str(event[0]) + "\n")
+#         f.write("src_node: " + str(event[1].src_node.id) + "\n")
+#         if event[1].event_type != "retry_mining":
+#             f.write("Event Packet ID: " + str(event[1].event_packet.id) + "\n")
         
-    f.close()
+#     f.close()
 
 z0 = int(sys.argv[1])
 z1 = int(sys.argv[2])
 ttx = int(sys.argv[3])
 
-# Inter-arrival time between blocks is set to 10 mins
-I = 60
-txn_count = 1
-block_count = 0
-event_count = 1
 
 
 node_graph = None
@@ -745,7 +777,6 @@ if __name__ == "__main__":
     for event in event_list:
         print(event[1].event_type,"at", event[0])
 
-    cur_time = 1    # Represents each ms
     while (len(event_list)!=0):
 
         # if len(event_list) > 100:
@@ -770,7 +801,6 @@ if __name__ == "__main__":
         # print("Event list length is",len(event_list))
 
     print("Initial txns done!")    
-    print(cur_time)
     
     # while (len(event_list)!=0):
 
