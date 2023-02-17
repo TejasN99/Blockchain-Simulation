@@ -14,7 +14,7 @@ event_count = 1
 PEER_CONN_MIN = 4
 PEER_CONN_MAX = 8
 
-# Block Generation Params
+# Minimum number of transactions in each block
 MIN_TXNS_BLOCK = 5
 
 
@@ -225,20 +225,6 @@ def write_logs_for_nodes():
         
         f.write("Length of longest chain: " + str(longest_chain_len) + "\n\n")
         links = []
-        # for block_id in node.block_timestamp:
-        #     f.write(str(block_id) + " [xlabel=" + str(int(node.block_timestamp[block_id][0]//60)) + "]\n")
-
-        #     cur_block = node.block_timestamp[block_id][2]
-        #     if cur_block.parent.id == 0:
-        #         if ("G", cur_block.id) not in links:
-        #             links.append(("G", cur_block.id))
-        #     elif (cur_block.id, cur_block.parent.id) not in links:
-        #         links.append((cur_block.parent.id, cur_block.id))
-
-        # f.write("\n")
-        # for link in links:
-        #     f.write(str(link[0]) + " -> " + str(link[1]) + "\n")
-
         f.close()
     
 
@@ -275,15 +261,10 @@ def write_logs_for_nodes():
             n_lowCPU += 1
         if block.creator_node.speed == "Slow":
             n_slow += 1
-        # print("Block:", block.id)
-        # print("Created by:",block.creator_node.id)
-        # print("Type of node:", block.creator_node.hash_power, block.creator_node.speed)
         tot_transaction += len(block.txn_list)
         block = block.parent
     
-    # prcnt_highCPU = (total_nodes - n_lowCPU)*100 / total_nodes
     prcnt_highCPU = (longest_leaf.chain_length - n_lowCPU) * 100 / longest_leaf.chain_length
-    # prcnt_fast = (total_nodes - n_slow)*100 / total_nodes
     prcnt_fast = (longest_leaf.chain_length - n_slow) * 100 / longest_leaf.chain_length
     
     f.write("\nNumber of blocks in the longest chain: " + str(longest_leaf.chain_length) + "\n")
@@ -296,13 +277,6 @@ def write_logs_for_nodes():
 
         
     
-
-    
-
-
-#Returns 
-# 1) A list of valid  txns 
-# 2) Balance sheet of the new block that will be generated
 def generate_valid_txn_list(node):
     """
     A function which tries to genereate a valid set of transactions to form a block
@@ -314,19 +288,22 @@ def generate_valid_txn_list(node):
     Returns
     -------
     txn_list: A subset of transactions from the Node's UTXO that are valid
-    balance_sheet: The updated balannce sheet for each node after considering all the transactions
+    balance_sheet: The updated balance sheet for each node after considering all the transactions
     of the blocks 
     """
 
     
     print("generate_valid_txn_list for node ",node.id)
     print("Length of unspent_txn_pool of node:",len(node.unspent_txn_pool))
+
+    # If UTXO has number of transactions less than MIN_TXNS_BLOCK, block is not generated
     if len(node.unspent_txn_pool) < MIN_TXNS_BLOCK:        
         print("Stuck due to less txns in UTXO")
         print("Event_count",event_count)
         print("For node:", node.id, "\tlen of seen txn:", len(node.seen_txn_id))
         print("No. of total txns:", txn_count)
-        # print("Length of txn_pool too small, returning None")
+        
+        # If the node has seen TOTAL_TXNS number of transactions but UTCO has less than MIN_TXNS_BLOCK number of transactions, we stop the simulation
         if len(node.seen_txn_id) >= TOTAL_TXNS:
             write_logs_for_nodes()
             exit()
@@ -336,7 +313,7 @@ def generate_valid_txn_list(node):
     no_of_attempts = 0
     max_no_of_attempts = 50 #UNDO
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
-        #Pick min 1 txn and max 1023 or length of UTXO txns
+        #Pick min MIN_TXNS_BLOCK transactions and max 1023 or (length of UTXO) txns
         num_txns = randint(MIN_TXNS_BLOCK, min(1023, len(node.unspent_txn_pool)))
         txn_list = [node.unspent_txn_pool[i] for i in sorted(random_sample.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
@@ -493,10 +470,9 @@ def start_mining(event_list, ttx):
         hq.heappush(event_list, (ttx + c, retry_mining_event))
         c += 1    
 
-# Check for connectedness
 def check_connectedness(visited_nodes,node_graph,current_node,total_nodes):
     """
-    The function chceks if node graph is connected or not by performing a DFS on it
+    The function checks if node graph is connected or not by performing a DFS on it
 
     Parameters
     ----------
@@ -543,11 +519,32 @@ def latency(sender_node,receiver_node,message_bits):
     return overall_delay
 
 def restart_mining(node, event_list, new_block, cur_execution_time):
+    """
+    Function is used to make a node restart mining on a different block, if a longer chain is detected while receiving a new block
+
+    Parameters
+    ----------
+    node : Node object
+        The node which would restart its mining
+    
+    event_list : list
+        The list of all events
+    
+    new_block : Block object
+        The new_block on which the node would restart its mining
+
+    cur_execution_time : float
+        The current execution time    
+    """
+
+    # Stopping the current mining event of the node
     for event in event_list:
         if event[1].src_node == node and event[1].event_type == "generate_block":
             event_list.remove(event)
             hq.heapify(event_list)
             break
+
+    # Changes the block being mined on to the new block and adds a new mining event
     node.mining_on = new_block
     txn_list, new_balance_sheet = generate_valid_txn_list(node)
     if txn_list == None:
@@ -570,10 +567,13 @@ def event_handler(event_list, event, ttx):
     Parameters
     ----------
     event_list: A min heap containing a list of tuple: 1st element is timestamp and 2nd element is the event object 
+
     event: The event object 
+
     ttx: Average interarrival time between two transactions
     """
 
+    # Handling a generate_txn event indicates that a particular node has just generated a transaction 
     if event.event_type == "generate_txn":
         global txn_count        
         print("Detected Generate_txn")
@@ -592,6 +592,7 @@ def event_handler(event_list, event, ttx):
             print("Event Count:receive_txn",event_count)
             hq.heappush(event_list,(execution_time,receive_event))
         
+        # We stop spawning transactions at 4 * TOTAL_TXNS so that the network is not flooded with transactions and hence simulation could end
         if txn_count > 4 * TOTAL_TXNS:
             print("Txn Count limit reached, stopping generation of txns")
             return
@@ -608,12 +609,13 @@ def event_handler(event_list, event, ttx):
         print("Event Count:generate_txn",event_count)
         hq.heappush(event_list,(event.execution_time + new_txn_duration,new_txn_event))
 
-    elif event.event_type=="generate_block":        
+    # Handing a generate_block event would indicate that a node has completed its mining
+    elif event.event_type == "generate_block":        
         src_node = event.src_node
         new_block = event.event_packet
         src_node.seen_block_id.append(new_block.id)
 
-        # 1 in block_timestamp means block generated by the same node
+        # 1 in block_timestamp means block generated by the same node. block_timestamp is used only for logging
         src_node.block_timestamp[new_block.id] = [event.execution_time, 1, new_block]
         print("Detected Generate_block",new_block.id, "from node",event.src_node.id)
 
@@ -625,7 +627,7 @@ def event_handler(event_list, event, ttx):
         print("Number of txns in block:", len(new_block.txn_list))
         print("UTXO Length b4 block generation",len(src_node.unspent_txn_pool))
 
-        "Removing the txns in new block from the node's unspent_txn_pool"
+        # Removing the txns in new block from the node's unspent_txn_pool
         for txn in new_block.txn_list:
             if txn in src_node.unspent_txn_pool:
                 src_node.unspent_txn_pool.remove(txn)
@@ -633,7 +635,7 @@ def event_handler(event_list, event, ttx):
 
         print("UTXO Length after block generation",len(src_node.unspent_txn_pool))
         
-        "Triggering Receive Block Event to all the node peers"
+        # Triggering Receive Block Event to all the node peers
         for peer_node in node_graph[src_node]:
             prev_execution_time = event.execution_time
             latency_delay = latency(src_node, peer_node, new_block.block_size)
@@ -643,10 +645,9 @@ def event_handler(event_list, event, ttx):
             hq.heappush(event_list,(execution_time,receive_event))
         
 
-        # Below are 2 parameters of the new block that will be generated by the source node
         new_txn_list, balance_sheet = generate_valid_txn_list(src_node)
 
-        # None means UTXO is empty currently: Trigger retry_mining
+        # generate_valid_txn_list function returns None when either the UTXO has too less number of transactions, or when a valid transaction list couldn't be generated
         if new_txn_list == None:
             retry_mining_event = Event(5*ttx + event.execution_time, "retry_mining", None, src_node)
             print("Event Count:retry_mining",event_count)
@@ -659,11 +660,14 @@ def event_handler(event_list, event, ttx):
             print("Event Count",event_count,":generate_block scheduled at node",src_node.id)
             hq.heappush(event_list,(event.execution_time + mining_duration, new_mining_event))
 
+    # Handing a receive_txn event would indicate that a node has received a transaction. It spawns more receive_txn events so as to forward the transaction
     elif event.event_type == "receive_txn":
         # The target node of previous event is the source node for the next receive event triggered
         src_node = event.tgt_node
         prev_src_node = event.src_node
         print("Detected Receive_txn from node",prev_src_node.id,"to node ",src_node.id)
+
+        # Forwarding the transaction looplessly
         if (event.event_packet.id not in src_node.seen_txn_id):
             src_node.seen_txn_id.append(event.event_packet.id)
             if event.event_packet not in src_node.unspent_txn_pool:
@@ -684,6 +688,7 @@ def event_handler(event_list, event, ttx):
                     print("Event Count:receive_txn",event_count)
                     hq.heappush(event_list,(execution_time,receive_event))
 
+    # Handing a receive_txn event would indicate that a node has received a new block. It spawns more receive_block events so as to forward the block
     elif event.event_type == "receive_block":
         # Checking if the block received is already in blockchain of the node
         prev_src_node = event.src_node
@@ -693,11 +698,11 @@ def event_handler(event_list, event, ttx):
 
         print("Detected Receive block",new_block.id, "from node",prev_src_node.id,"to node ",src_node.id)
 
-        # If block is already seen by the node, we do not forward it again
+        # Forwarding the block looplessly
         if new_block.id not in src_node.seen_block_id:
             src_node.seen_block_id.append(new_block.id)
 
-            # 0 in block_timestamp means block generated by another node
+            # 0 in block_timestamp means block generated by another node, block_timestamp is used only for logging
             src_node.block_timestamp[new_block.id] = [cur_time, 0, new_block]
             if new_block.parent in src_node.leaf_blocks:
                 src_node.leaf_blocks.remove(new_block.parent)
@@ -715,12 +720,14 @@ def event_handler(event_list, event, ttx):
                 else:
                     print("Not sending receive block from node ",src_node.id,"to peer node ",peer_node.id,"since packet came from there!")
 
+            # If the new block is connected to the block curently being mined on, we remove transactions in the new block from UTXO and restart mining on the new block
             if new_block.parent == src_node.mining_on:
                 for txn in new_block.txn_list:
                     if txn in src_node.unspent_txn_pool:
                         src_node.unspent_txn_pool.remove(txn)
                 restart_mining(src_node, event_list, new_block, event.execution_time)
 
+            # If the new block is a fork and the chain length is greater
             elif new_block.chain_length > src_node.mining_on.chain_length:
                 current_mining_chain = []
                 block = src_node.mining_on
@@ -741,11 +748,10 @@ def event_handler(event_list, event, ttx):
                         del current_mining_chain[-1]
                         del new_block_chain[-1]
                         
-                        # If new block came earlier than parent and both nodes are in the same chain
                         if current_mining_chain == []:
                             break
 
-                    
+                # We backtrack the blockchain from the current chain to the new longer chain. Transactions from the current chain are added back to the UTXO and transactions from the new chain are removed from the UTXO of the node
                 for block in current_mining_chain:
                     for txn in block.txn_list:
                         if txn in src_node.seen_txn_id:
@@ -758,16 +764,19 @@ def event_handler(event_list, event, ttx):
                 # Killing the current mining of the node since longer chain was found
                 restart_mining(src_node, event_list, new_block, event.execution_time)
              
-    
+    # retry_mining event is used to check if the UTXO currently has enough transactions to start mining a block
     elif event.event_type == "retry_mining":
         src_node = event.src_node
         cur_time = event.execution_time        
         txn_list, new_balance_sheet = generate_valid_txn_list(src_node)
+                
         if txn_list == None:
+            # UTXO still doesn't have enough transactions, hence add another retry_mining event to event_list
             retry_mining_event = Event(cur_time + 5*ttx, "retry_mining", None, src_node)
             print("Event Count:retry_mining",event_count)
             hq.heappush(event_list, (cur_time + 5*ttx, retry_mining_event))
         else:
+            # generating transaction list for block was successful, hence start mining
             mining_time = random.exponential(scale = src_node.avg_mining_time)
             execution_time = cur_time + mining_time
             new_block = Block(src_node, src_node.mining_on, txn_list, new_balance_sheet)
@@ -776,11 +785,11 @@ def event_handler(event_list, event, ttx):
             hq.heappush(event_list,(execution_time, mining_event))
 
 
-z0 = int(sys.argv[1])
-z1 = int(sys.argv[2])
-ttx = int(sys.argv[3])
-I = int(sys.argv[4])
-total_nodes = int(sys.argv[5])
+z0 = int(sys.argv[1])           # Persentage of slow nodes
+z1 = int(sys.argv[2])           # Persentage of low CPU nodes
+ttx = int(sys.argv[3])          # Avg. inter-arrival time between transactions of each node
+I = int(sys.argv[4])            # Avg. mining time of a block across the network
+total_nodes = int(sys.argv[5])  # Total number of nodes in the network
 
 # Termination criteria
 TOTAL_TXNS = int(sys.argv[6])
@@ -819,11 +828,11 @@ for id in range(1, total_nodes+1):
 if __name__ == "__main__":    
     event_list = gen_initial_txns()
     start_mining(event_list, ttx)
+    print("Added initial transaction and mining events!")
 
     ## Event Handler driver code
     while (len(event_list)!=0):
-
+        # Popping the event with the least execution time and handling the event
+        # Each event in event_list is a tuple of the form (execution_time, Event Object)
         event  = hq.heappop(event_list)[1]
         event_handler(event_list, event, ttx)
-
-    print("Initial txns done!")    
