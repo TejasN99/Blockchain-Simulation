@@ -1,0 +1,73 @@
+# Node A's view
+#Initialize
+
+
+Extra parameters for adversary:
+    pvt_chain
+    lead
+
+
+
+lead=0
+
+if node=='A'
+{
+
+if a_block_mined == true  
+{
+    if (lead != "0_")
+    {
+    lead++
+    pvt_chain.append()
+    }
+
+    else {
+    lead=0
+    release block publicly
+    
+    }
+}
+
+if h_block_mined == true
+{
+    if (h_block.chain_length>A.mining_on.chain_length):
+    {
+    A switches mining to H block
+    }
+    else 
+    {
+        if (A.mining_on.chain_length-h_block.chain_length < lead)
+        {
+            if (lead>2):
+            {
+                lead--
+                relase first block from pvt_chain
+            }
+
+            if (lead==2):
+            {
+                lead=0
+                release both blocks from pvt_chain
+    
+            }
+
+            if (lead==1):
+            {
+                lead='0_'
+                release block from pvt_chain
+    
+            }
+            if (lead=='0_' || lead==0)
+            {
+                lead=0
+                switch mining to new block
+            }
+    
+        }
+    }
+    
+}
+
+
+
+}

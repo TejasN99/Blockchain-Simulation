@@ -1,0 +1,44 @@
+# Node A's view
+#Initialize
+lead=0
+
+if node=='A'
+{
+
+#Note: 0 an d 0_ are same for stubborn mining (It seems)
+if a_block_mined == true  
+{
+    lead++
+    pvt_chain.append()
+}
+
+if h_block_mined == true
+{
+    if (h_block.chain_length>A.mining_on.chain_length):
+    {
+    A switches mining to H block
+    }
+    else 
+    {
+        #Case to Ignore for old honest block
+        if (A.mining_on.chain_length-h_block.chain_length < lead)
+        {
+            if (lead>0):
+            {
+                lead--
+                relase first block from pvt_chain
+            }
+
+            if (lead==0)
+            {
+                switch mining to new H block
+            }
+    
+        }
+    }
+    
+}
+
+
+
+}
