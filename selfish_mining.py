@@ -189,7 +189,7 @@ def write_logs_for_nodes():
         os.makedirs(log_folder_path)
 
     # for i, node in enumerate(total_nodes, nodes.values()):
-    for i in range(1, total_nodes+1):
+    for i in range(1, total_nodes+2):
         node = nodes[i]
         f = open(log_folder + "/node_" + str(i) + ".txt", "w")
         f.write("Node Type:\n")
@@ -662,14 +662,16 @@ def event_handler(event_list, event, ttx):
                 #Release block publicly. 
                 # So we forward block to all peers
                 #We also update leaf blocks officially
-                pvt_block=src_node.pvt_chain[0]
-                src_node.pvt_chain=src_node.pvt_chain[1:]
-                src_node.public_release=1
-                print("Node", src_node.id,"publicly releases a private block.State: 0_ to 0")
-                c+=1 
-                new_mining_event = Event(event.execution_time +c, "generate_block", pvt_block, src_node)
-                print("Event Count",event_count,"Pvt_block released.State: 0_ to 0 at node",src_node.id)
-                hq.heappush(event_list,(event.execution_time +c, new_mining_event))
+                
+                if (len(src_node.pvt_chain)>0):
+                    pvt_block=src_node.pvt_chain[0]
+                    src_node.pvt_chain=src_node.pvt_chain[1:]
+                    src_node.public_release=1
+                    print("Node", src_node.id,"publicly releases a private block.State: 0_ to 0")
+                    c+=1 
+                    new_mining_event = Event(event.execution_time +c, "generate_block", pvt_block, src_node)
+                    print("Event Count",event_count,"Pvt_block released.State: 0_ to 0 at node",src_node.id)
+                    hq.heappush(event_list,(event.execution_time +c, new_mining_event))
 
         
 

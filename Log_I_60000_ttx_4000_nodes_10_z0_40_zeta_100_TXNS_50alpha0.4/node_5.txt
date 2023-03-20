@@ -1,9 +1,9 @@
 Node Type:
-Slow, Received block: 6 at 262177.07030281273 with 9 transactions
-Received block: 17 at 325164.78895703226 with 145 transactions
-Generated block: 36 at 502133.14659171016
+Fast, Received block: 10 at 33433.136326908876 with 18 transactions
+Received block: 12 at 51884.617356183204 with 75 transactions
+Received block: 28 at 76867.42812652535 with 54 transactions
 
 Chains at node:
-G <- 6 <- 17 <- 36 
+G <- 10 <- 12 <- 28 
 Length of longest chain: 3
 
