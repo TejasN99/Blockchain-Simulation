@@ -1,9 +1,0 @@
-Node Type:
-Slow, Generated block: 10 at 33015.14211562271
-Generated block: 12 at 51401.91114308243
-Received block: 28 at 76731.93651123521 with 54 transactions
-
-Chains at node:
-G <- 10 <- 12 <- 28 
-Length of longest chain: 3
-

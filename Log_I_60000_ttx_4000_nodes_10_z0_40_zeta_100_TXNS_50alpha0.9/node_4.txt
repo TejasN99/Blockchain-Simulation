@@ -1,8 +1,0 @@
-Node Type:
-Fast, Received block: 9 at 64148.02124771231 with 8 transactions
-Received block: 14 at 136073.80154542066 with 139 transactions
-
-Chains at node:
-G <- 9 <- 14 
-Length of longest chain: 2
-

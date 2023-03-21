@@ -1,0 +1,20 @@
+Node Type:
+Slow, Received block: 6 at 27631.687914523907 with 24 transactions
+Received block: 18 at 269956.54902477295 with 42 transactions
+Received block: 14 at 270252.01969213126 with 46 transactions
+Received block: 24 at 551439.1158522227 with 245 transactions
+Received block: 40 at 601632.9899750641 with 159 transactions
+Received block: 45 at 631006.7734158859 with 937 transactions
+Received block: 60 at 789358.0415781304 with 66 transactions
+Received block: 67 at 789579.7882888797 with 72 transactions
+Received block: 61 at 789816.6109156904 with 342 transactions
+Received block: 78 at 836826.8047898774 with 25 transactions
+Received block: 97 at 876074.2251298416 with 83 transactions
+
+Chains at node:
+G <- 6 <- 14 
+G <- 6 <- 18 <- 24 <- 40 <- 45 <- 60 
+G <- 6 <- 18 <- 24 <- 40 <- 45 <- 61 
+G <- 6 <- 18 <- 24 <- 40 <- 45 <- 61 <- 67 <- 78 <- 97 
+Length of longest chain: 9
+
