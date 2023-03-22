@@ -311,7 +311,7 @@ def generate_valid_txn_list(node):
 
     txns_valid_flag = 0
     no_of_attempts = 0
-    max_no_of_attempts = 50 #UNDO
+    max_no_of_attempts = 50
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
         #Pick min MIN_TXNS_BLOCK transactions and max 1023 or (length of UTXO) txns
         num_txns = randint(MIN_TXNS_BLOCK, min(1023, len(node.unspent_txn_pool)))
@@ -495,6 +495,7 @@ def latency(sender_node,receiver_node,message_bits):
         link_speed = 100
     else:
         link_speed = 5
+    #pho 
     light_delay = randint(10,500)
     queue_delay = random.exponential(scale = 96/(link_speed * (2**10)))
 
