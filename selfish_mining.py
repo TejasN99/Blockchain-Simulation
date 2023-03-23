@@ -17,6 +17,8 @@ PEER_CONN_MAX = 7
 # Minimum number of transactions in each block
 MIN_TXNS_BLOCK = 5
 
+adversary_blocks_public = []
+adversary_blocks_private=[]
 
 class Node:
     """
@@ -236,6 +238,9 @@ def write_logs_for_nodes():
         f.write("Length of longest chain: " + str(longest_chain_len) + "\n\n")
         links = []
         f.close()
+
+    print("Adversary blocks private:", str(adversary_blocks_private))
+    print("Adversary blocks public:", str(adversary_blocks_public))
     
 
     f = open(log_folder + "/overall_stats.txt", "w")
@@ -243,7 +248,10 @@ def write_logs_for_nodes():
     f.write("Number of nodes: " + str(total_nodes) + "\n")
     f.write("Avg. mining time: " + str(I) + "\n")
     f.write("Avg. time between transactions: " + str(ttx) + "\n")
-    f.write("Percentage of slow nodes: " +str(z0) + "\n")
+    f.write("Percentage of slow nodes: " + str(z0) + "\n")
+    f.write("Adversary blocks private:" + str(adversary_blocks_private))
+    f.write("Adversary blocks public:" + str(adversary_blocks_public))
+
     #f.write("Percentage of High CPU nodes: " + str(z1) + "\n\n")
 
     for node in node_graph:
@@ -324,7 +332,8 @@ def generate_valid_txn_list(node):
     max_no_of_attempts = 50 #UNDO
     while txns_valid_flag == 0 and no_of_attempts != max_no_of_attempts:
         #Pick min MIN_TXNS_BLOCK transactions and max 1023 or (length of UTXO) txns
-        num_txns = randint(MIN_TXNS_BLOCK, min(1023, len(node.unspent_txn_pool)))
+        # num_txns = randint(MIN_TXNS_BLOCK, min(1023, len(node.unspent_txn_pool))) 
+        num_txns = 5 ## UNDO
         txn_list = [node.unspent_txn_pool[i] for i in sorted(random_sample.sample(range(len(node.unspent_txn_pool)), num_txns))]
         balance_sheet = node.mining_on.balance_sheet.copy()
         txns_valid_flag = 1
@@ -592,7 +601,7 @@ def event_handler(event_list, event, ttx):
             hq.heappush(event_list,(execution_time,receive_event))
         
         # We stop spawning transactions at 4 * TOTAL_TXNS so that the network is not flooded with transactions and hence simulation could end
-        if txn_count > 4 * TOTAL_TXNS:
+        if txn_count > 2 * TOTAL_TXNS:
             print("Txn Count limit reached, stopping generation of txns")
             return
 
@@ -616,6 +625,11 @@ def event_handler(event_list, event, ttx):
         src_node.seen_block_id.append(new_block.id)
 
         if isinstance(src_node,Adversary):
+            if (new_block.adversary_release_status=='public'):
+                adversary_blocks_public.append(new_block.id)
+            else:
+                adversary_blocks_private.append(new_block.id)
+
             print("Inside generate_block of Adversry Node",src_node.id,"with block id",new_block.id)
             print("Lead",src_node.lead)
             print("Adversary_release_status",new_block.adversary_release_status)
