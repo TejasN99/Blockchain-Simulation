@@ -19,7 +19,7 @@ Simulation of a P2P Decentralized following high level Bitcoin Protocol
         - start generating new block
             - Check if txn_pool of block has atleast 50 txns
                 - If no, schedule generate_block with event_packet = None after 100 ms
-                - If yes: select subset of txns from txn_pool, add coinbase txn, calculate size of block and add
+                - If yes: select a subset of txns from txn_pool, add coinbase txn, calculate size of block and add
     - [ ] Receive block:
         - Check length from new block
             - if longer than current, remove current mining block
